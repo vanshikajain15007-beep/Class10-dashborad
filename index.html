@@ -113,23 +113,25 @@
         #success-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(16, 185, 129, 0.95); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px; animation: fadeIn 0.5s ease-out; }
         #success-overlay h1 { font-size: 60px; margin-bottom: 20px; font-weight: 900; text-transform: uppercase; text-shadow: 2px 2px 0 #000; }
         
-        /* 
-           HIDDEN PDF TEMPLATE 
-           This is what gets converted into the beautiful PDF 
-        */
-        #pdf-template { display: none; background: white; color: #1e293b; width: 800px; padding: 40px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        /* Toast Notification UI */
+        .toast-notification { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: var(--success); color: white; padding: 16px 28px; border-radius: 30px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10000; display: flex; align-items: center; gap: 10px; }
+        .toast-notification.show { bottom: 40px; }
+        
+        /* PERFECTED MULTI-PAGE PDF TEMPLATE */
+        #pdf-template { display: none; background: white; color: #1e293b; width: 750px; max-width: none; padding: 40px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-sizing: border-box; }
         .pdf-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid var(--primary); }
         .pdf-header h1 { font-size: 32px; color: var(--primary); font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; }
         .pdf-stats { display: flex; justify-content: space-around; background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #e2e8f0; }
         .pdf-stat-box { text-align: center; }
         .pdf-stat-box span { font-size: 24px; font-weight: 800; display: block; margin-bottom: 5px; }
         .pdf-stat-box label { font-size: 14px; color: #64748b; text-transform: uppercase; font-weight: 700; }
-        .pdf-subject-section { margin-bottom: 25px; page-break-inside: avoid; }
-        .pdf-subject-title { background: #f1f5f9; padding: 10px 15px; border-left: 5px solid var(--primary); font-size: 20px; font-weight: 700; color: #334155; margin-bottom: 15px; display: flex; justify-content: space-between; }
-        .pdf-chapter-list { list-style: none; padding-left: 15px; }
-        .pdf-chapter-item { font-size: 14px; padding: 8px 0; border-bottom: 1px dashed #cbd5e1; display: flex; justify-content: space-between; color: #475569; }
-        .pdf-chapter-item.done { color: var(--success); font-weight: 600; }
-        .pdf-footer { text-align: center; margin-top: 40px; font-size: 12px; color: #94a3b8; }
+        .pdf-subject-section { margin-bottom: 30px; page-break-inside: avoid; } 
+        .pdf-subject-title { background: #f1f5f9; padding: 12px 18px; border-left: 6px solid var(--primary); font-size: 22px; font-weight: 800; color: #334155; margin-bottom: 15px; display: flex; justify-content: space-between; border-radius: 0 8px 8px 0; }
+        .pdf-chapter-list { list-style: none; padding-left: 10px; margin-bottom: 20px; }
+        .pdf-chapter-item { font-size: 15px; padding: 10px 10px; border-bottom: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: flex-start; color: #475569; gap: 15px; }
+        .pdf-chapter-item span:first-child { flex: 1; text-align: left; line-height: 1.4; } 
+        .pdf-chapter-item.done { color: var(--success); font-weight: 700; background: rgba(16, 185, 129, 0.05); }
+        .pdf-footer { text-align: center; margin-top: 50px; font-size: 14px; color: #94a3b8; font-weight: bold; border-top: 1px solid #e2e8f0; padding-top: 20px; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes flashRed { 0% { background: rgba(255, 0, 0, 1); transform: scale(1.05); } 100% { background: rgba(220, 38, 38, 0.95); transform: scale(1); } }
@@ -146,6 +148,10 @@
             .tab-btn { text-align: center; padding: 10px 20px; border-radius: 30px; font-size: 14px; flex-shrink: 0; scroll-snap-align: start; margin-bottom: 0; }
             .analytics-btn, .focus-btn { margin-bottom: 0; margin-right: 5px; }
             .download-btn { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+            
+            /* Ensures Toast slides up ABOVE the mobile floating download button */
+            .toast-notification.show { bottom: 100px; }
+            
             .main-content { padding: 25px 20px 100px 20px; }
             .header h1 { font-size: 28px; }
             .sub-subject { padding: 18px; border-radius: 12px; margin-bottom: 20px; }
@@ -160,6 +166,9 @@
 </head>
 <body>
 
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">✅ Report Downloaded Successfully!</div>
+
     <!-- Penalty & Success Overlays -->
     <div id="penalty-overlay">
         <h1>🚨 BUSTED 🚨</h1>
@@ -172,7 +181,7 @@
         <button class="close-penalty-btn" style="color: var(--success);" onclick="closeSuccess()">Claim Points</button>
     </div>
 
-    <!-- Hidden PDF Template -->
+    <!-- Hidden Multi-Page PDF Template -->
     <div id="pdf-template">
         <div class="pdf-header">
             <h1>🎓 CLASS 10 PROGRESS REPORT</h1>
@@ -185,7 +194,7 @@
             </div>
             <div class="pdf-stat-box">
                 <span id="pdf-overall" style="color: var(--primary);">📈 0%</span>
-                <label>Master Syllabus Completion</label>
+                <label>Syllabus Mastered</label>
             </div>
             <div class="pdf-stat-box">
                 <span id="pdf-date" style="color: var(--success);">📅 Date</span>
@@ -305,7 +314,7 @@
 
         let savedProgress = JSON.parse(localStorage.getItem('proTrackerDataV2')) || {}; 
         let focusPoints = parseInt(localStorage.getItem('proTrackerPoints')) || 100;
-        let globalOverallPercent = 0; // Stored for PDF use
+        let globalOverallPercent = 0; 
         
         const tabsContainer = document.getElementById('tabs-container');
         const contentContainer = document.getElementById('content-container');
@@ -551,14 +560,22 @@
         }
 
         // ==========================================
-        // BEAUTIFUL PDF GENERATION LOGIC
+        // TOAST NOTIFICATION FUNCTION
         // ==========================================
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500); // Notification stays for 3.5 seconds
+        }
+
         function downloadPDFReport() {
             const btn = document.getElementById('dl-btn');
             btn.innerText = "⏳ Generating PDF...";
-            btn.style.backgroundColor = "#f59e0b"; // Warning color
+            btn.style.backgroundColor = "#f59e0b"; 
 
-            // 1. Populate the hidden PDF template with current data
             document.getElementById('pdf-score').innerText = `🔥 ${focusPoints}`;
             document.getElementById('pdf-overall').innerText = `📈 ${globalOverallPercent}%`;
             
@@ -566,12 +583,11 @@
             document.getElementById('pdf-date').innerText = `📅 ${today.toLocaleDateString()}`;
 
             const pdfContent = document.getElementById('pdf-content');
-            pdfContent.innerHTML = ''; // Clear old data
+            pdfContent.innerHTML = ''; 
 
             for (const subject in syllabus) {
                 let subjectHtml = `<div class="pdf-subject-section">`;
                 
-                // Calculate Subject specific progress for the PDF header
                 let sTotal = 0, sDone = 0;
                 for (const sub in syllabus[subject]) {
                     syllabus[subject][sub].forEach(ch => {
@@ -611,22 +627,25 @@
                 pdfContent.innerHTML += subjectHtml;
             }
 
-            // 2. Unhide template, capture it, re-hide it
             const element = document.getElementById('pdf-template');
             element.style.display = 'block';
 
             const opt = {
-                margin:       10,
+                margin:       [15, 10, 15, 10], 
                 filename:     `Class10_Report_${today.toLocaleDateString().replace(/\//g, '-')}.pdf`,
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                html2canvas:  { scale: 2, windowWidth: 800 }, 
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['css', 'legacy'], avoid: '.pdf-subject-section' } 
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
                 element.style.display = 'none';
                 btn.innerText = "📄 Download PDF Report";
                 btn.style.backgroundColor = "#334155";
+                
+                // Trigger the beautiful new UI Toast notification
+                showToast("✅ Report Downloaded Successfully!");
             });
         }
 
