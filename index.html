@@ -17,62 +17,115 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100dvh; overflow: hidden; }
 
-        /* Sidebar UI */
-        .sidebar { width: 250px; background-color: var(--bg-panel); padding: 20px; display: flex; flex-direction: column; border-right: 1px solid #334155; }
-        .sidebar h2 { color: var(--primary); font-size: 24px; margin-bottom: 30px; letter-spacing: 1px; }
-        .tab-btn { background: transparent; color: var(--text-muted); border: none; padding: 12px 15px; text-align: left; font-size: 16px; font-weight: 600; cursor: pointer; border-radius: 8px; margin-bottom: 8px; transition: all 0.2s; }
-        .tab-btn:hover { background-color: #334155; color: var(--text-main); }
-        .tab-btn.active { background-color: var(--primary); color: white; }
+        /* Sidebar UI (Desktop/Tablet) */
+        .sidebar { width: 280px; background-color: var(--bg-panel); padding: 24px; display: flex; flex-direction: column; border-right: 1px solid #334155; z-index: 10; }
+        .sidebar h2 { color: var(--primary); font-size: 26px; margin-bottom: 15px; letter-spacing: 1px; font-weight: 800; }
         
-        .download-btn { margin-top: auto; background-color: var(--success); color: white; border: none; padding: 12px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; text-align: center; }
-        .download-btn:hover { background-color: #059669; transform: translateY(-2px); }
+        /* Overall Progress */
+        .sidebar-progress-container { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #334155; }
+        .sidebar-progress-text { font-size: 15px; font-weight: bold; color: var(--success); margin-bottom: 10px; display: block; }
+        .sidebar-progress-track { width: 100%; background-color: #0f172a; border-radius: 10px; height: 14px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
+        .sidebar-progress-bar { height: 100%; background-color: var(--success); width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Tabs */
+        #tabs-container { display: flex; flex-direction: column; gap: 8px; }
+        .tab-btn { background: transparent; color: var(--text-muted); border: none; padding: 14px 18px; text-align: left; font-size: 16px; font-weight: 600; cursor: pointer; border-radius: 10px; transition: all 0.2s ease; }
+        .tab-btn:hover { background-color: #334155; color: var(--text-main); }
+        .tab-btn.active { background-color: var(--primary); color: white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
+        
+        /* Download Button */
+        .download-btn { margin-top: auto; background-color: var(--success); color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-align: center; font-size: 16px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
+        .download-btn:hover { background-color: #059669; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4); }
 
         /* Main Content UI */
-        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .header h1 { font-size: 32px; }
+        .main-content { flex-grow: 1; padding: 40px 50px; overflow-y: auto; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); scroll-behavior: smooth; }
+        .header { display: flex; flex-direction: column; margin-bottom: 35px; gap: 15px; }
+        .header h1 { font-size: 36px; color: white; font-weight: 800; }
         
-        .progress-container { width: 300px; background-color: #334155; border-radius: 20px; overflow: hidden; height: 24px; position: relative; }
-        .progress-bar { height: 100%; background-color: var(--success); width: 0%; transition: width 0.5s ease-in-out; }
-        .progress-text { position: absolute; top: 0; left: 0; width: 100%; text-align: center; font-size: 14px; font-weight: bold; line-height: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in; }
+        /* Subject Specific Progress */
+        .progress-container { width: 100%; max-width: 600px; background-color: #334155; border-radius: 20px; overflow: hidden; height: 30px; position: relative; box-shadow: inset 0 2px 5px rgba(0,0,0,0.4); }
+        .progress-bar { height: 100%; background-color: var(--primary); width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .progress-text { position: absolute; top: 0; left: 0; width: 100%; text-align: center; font-size: 15px; font-weight: bold; line-height: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
 
         /* Sub-Subject Cards */
-        .sub-subject { background: rgba(255, 255, 255, 0.03); border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .sub-subject h3 { color: #818cf8; margin-bottom: 15px; font-size: 20px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+        .sub-subject { background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; border-radius: 16px; padding: 25px; margin-bottom: 25px; backdrop-filter: blur(10px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .sub-subject h3 { color: #818cf8; margin-bottom: 20px; font-size: 22px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
         
         /* Checkbox styling */
-        .chapter-row { display: flex; align-items: center; padding: 10px; background: rgba(0,0,0,0.2); margin-bottom: 8px; border-radius: 6px; transition: 0.2s; }
-        .chapter-row:hover { background: rgba(255,255,255,0.05); }
-        .chapter-row label { flex-grow: 1; cursor: pointer; padding-left: 15px; font-size: 16px; }
-        input[type="checkbox"] { appearance: none; width: 22px; height: 22px; border: 2px solid var(--primary); border-radius: 4px; background: transparent; cursor: pointer; position: relative; transition: 0.2s; }
-        input[type="checkbox"]:checked { background: var(--primary); }
-        input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 14px; left: 4px; top: 0px; }
-        .completed-text { text-decoration: line-through; color: var(--text-muted); }
+        .chapter-row { display: flex; align-items: center; padding: 14px 16px; background: rgba(0,0,0,0.25); margin-bottom: 10px; border-radius: 10px; transition: 0.2s; border: 1px solid transparent; }
+        .chapter-row:hover { background: rgba(255,255,255,0.05); border-color: #334155; transform: translateX(4px); }
+        .chapter-row label { flex-grow: 1; cursor: pointer; padding-left: 18px; font-size: 17px; display: flex; justify-content: space-between; align-items: center; }
+        .weight-badge { font-size: 13px; background: #334155; padding: 4px 10px; border-radius: 12px; color: var(--text-muted); font-weight: 600; }
+        
+        input[type="checkbox"] { appearance: none; min-width: 26px; min-height: 26px; border: 2px solid var(--primary); border-radius: 6px; background: transparent; cursor: pointer; position: relative; transition: 0.2s; }
+        input[type="checkbox"]:checked { background: var(--primary); border-color: var(--primary); }
+        input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 18px; left: 4px; top: -1px; }
+        .completed-text { text-decoration: line-through; color: var(--text-muted); opacity: 0.7; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* =========================================
+           MOBILE RESPONSIVE DESIGN (The Magic) 
+           ========================================= */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            
+            /* Morph sidebar into a slick top navigation */
+            .sidebar { width: 100%; padding: 20px 15px 10px 15px; border-right: none; border-bottom: 1px solid #334155; background: rgba(30, 41, 59, 0.98); z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+            .sidebar h2 { font-size: 22px; text-align: center; margin-bottom: 12px; }
+            
+            .sidebar-progress-container { margin-bottom: 12px; padding-bottom: 12px; }
+            
+            /* Convert vertical tabs into horizontal swiping chips! */
+            #tabs-container { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 5px; scrollbar-width: none; scroll-snap-type: x mandatory; }
+            #tabs-container::-webkit-scrollbar { display: none; }
+            .tab-btn { text-align: center; padding: 10px 20px; border-radius: 30px; font-size: 14px; flex-shrink: 0; scroll-snap-align: start; margin-bottom: 0; }
+            
+            /* Floating Action Button for Mobile */
+            .download-btn { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 1000; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); }
+            .download-btn:hover { transform: translateX(-50%) translateY(-3px); }
+
+            /* Adjust main content for smaller screens */
+            .main-content { padding: 25px 20px 100px 20px; /* Extra bottom padding so chapters aren't hidden by the floating button */ }
+            .header h1 { font-size: 28px; }
+            
+            /* Tweak card sizes */
+            .sub-subject { padding: 18px; border-radius: 12px; margin-bottom: 20px; }
+            .sub-subject h3 { font-size: 19px; }
+            .chapter-row { padding: 12px; }
+            .chapter-row label { font-size: 15px; padding-left: 12px; flex-direction: column; align-items: flex-start; gap: 6px; }
+            .weight-badge { align-self: flex-start; }
+            
+            /* Disable hover animations on touch screens */
+            .chapter-row:hover { transform: none; }
+        }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
         <h2>Big Brother OS</h2>
+        
+        <div class="sidebar-progress-container">
+            <span class="sidebar-progress-text" id="overall-progress-text">Overall: 0%</span>
+            <div class="sidebar-progress-track">
+                <div class="sidebar-progress-bar" id="overall-progress-bar"></div>
+            </div>
+        </div>
+
         <div id="tabs-container">
             <!-- Subject Tabs Injected Here -->
         </div>
-        <button class="download-btn" onclick="downloadReport()">📥 Download My Report</button>
+        
+        <button class="download-btn" onclick="downloadReport()">📥 Download Report</button>
     </div>
 
     <div class="main-content">
         <div class="header">
             <h1 id="current-subject-title">Select a Subject</h1>
             <div class="progress-container">
-                <div class="progress-bar" id="overall-progress-bar"></div>
-                <div class="progress-text" id="overall-progress-text">0% Completed</div>
+                <div class="progress-bar" id="subject-progress-bar"></div>
+                <div class="progress-text" id="subject-progress-text">0% Completed</div>
             </div>
         </div>
         
@@ -82,58 +135,94 @@
     </div>
 
     <script>
-        // Full Nested Data Structure for All 6 Subjects
+        // Weighted Data Structure
         const syllabus = {
-            "Science": {
-                "Physics": ["Light (Reflection & Refraction)", "The Human Eye", "Electricity", "Magnetic Effects of Current"],
-                "Chemistry": ["Chemical Reactions and Equations", "Acids, Bases and Salts", "Metals and Non-metals", "Carbon and its Compounds"],
-                "Biology": ["Life Processes", "Control and Coordination", "How do Organisms Reproduce", "Heredity", "Our Environment"]
-            },
             "Mathematics": {
-                "Algebra & Numbers": ["Real Numbers", "Polynomials", "Pair of Linear Equations", "Quadratic Equations", "Arithmetic Progressions"],
-                "Geometry": ["Coordinate Geometry", "Triangles", "Circles", "Areas Related to Circles", "Surface Areas and Volumes"],
-                "Trigonometry & Stats": ["Intro to Trigonometry", "Heights and Distances", "Statistics", "Probability"]
+                "Algebra & Numbers": [
+                    { name: "Real Numbers", weight: 1.0 }, { name: "Polynomials", weight: 1.5 }, { name: "Pair of Linear Equations", weight: 2.0 }, { name: "Quadratic Equations", weight: 2.0 }, { name: "Arithmetic Progressions", weight: 1.5 }
+                ],
+                "Geometry": [
+                    { name: "Coordinate Geometry", weight: 1.5 }, { name: "Triangles", weight: 3.0 }, { name: "Circles", weight: 1.5 }, { name: "Areas Related to Circles", weight: 1.0 }, { name: "Surface Areas and Volumes", weight: 2.5 }
+                ],
+                "Trigonometry & Stats": [
+                    { name: "Intro to Trigonometry", weight: 2.5 }, { name: "Heights and Distances", weight: 1.5 }, { name: "Statistics", weight: 2.0 }, { name: "Probability", weight: 0.5 }
+                ]
+            },
+            "Science": {
+                "Physics": [
+                    { name: "Light (Reflection & Refraction)", weight: 3.0 }, { name: "The Human Eye", weight: 1.0 }, { name: "Electricity", weight: 2.5 }, { name: "Magnetic Effects of Current", weight: 2.0 }
+                ],
+                "Chemistry": [
+                    { name: "Chemical Reactions and Equations", weight: 1.5 }, { name: "Acids, Bases and Salts", weight: 2.0 }, { name: "Metals and Non-metals", weight: 2.0 }, { name: "Carbon and its Compounds", weight: 3.0 }
+                ],
+                "Biology": [
+                    { name: "Life Processes", weight: 3.0 }, { name: "Control and Coordination", weight: 1.5 }, { name: "How do Organisms Reproduce", weight: 2.0 }, { name: "Heredity", weight: 1.5 }, { name: "Our Environment", weight: 0.5 }
+                ]
             },
             "Social Science": {
-                "History": ["Nationalism in Europe", "Nationalism in India", "Making of a Global World", "Print Culture"],
-                "Geography": ["Resources & Development", "Water Resources", "Agriculture", "Minerals & Energy", "Manufacturing", "Lifelines of Economy"],
-                "Civics": ["Power Sharing", "Federalism", "Gender, Religion, Caste", "Political Parties", "Outcomes of Democracy"],
-                "Economics": ["Development", "Sectors of Indian Economy", "Money and Credit", "Globalisation", "Consumer Rights"]
+                "History": [
+                    { name: "Nationalism in Europe", weight: 3.0 }, { name: "Nationalism in India", weight: 2.5 }, { name: "Making of a Global World", weight: 1.5 }, { name: "Print Culture", weight: 2.0 }
+                ],
+                "Geography": [
+                    { name: "Resources & Development", weight: 1.0 }, { name: "Water Resources", weight: 1.0 }, { name: "Agriculture", weight: 1.5 }, { name: "Minerals & Energy", weight: 1.5 }, { name: "Manufacturing", weight: 1.5 }, { name: "Lifelines of Economy", weight: 1.0 }
+                ],
+                "Civics": [
+                    { name: "Power Sharing", weight: 1.0 }, { name: "Federalism", weight: 1.5 }, { name: "Gender, Religion, Caste", weight: 1.5 }, { name: "Political Parties", weight: 1.0 }, { name: "Outcomes of Democracy", weight: 1.0 }
+                ],
+                "Economics": [
+                    { name: "Development", weight: 1.0 }, { name: "Sectors of Indian Economy", weight: 1.5 }, { name: "Money and Credit", weight: 1.5 }, { name: "Globalisation", weight: 1.0 }, { name: "Consumer Rights", weight: 1.0 }
+                ]
             },
             "English": {
-                "First Flight (Prose)": ["A Letter to God", "Nelson Mandela", "Two Stories about Flying", "From the Diary of Anne Frank", "Glimpses of India", "Mijbil the Otter", "Madam Rides the Bus", "The Sermon at Benares", "The Proposal"],
-                "First Flight (Poetry)": ["Dust of Snow & Fire and Ice", "A Tiger in the Zoo", "How to Tell Wild Animals", "The Ball Poem & Amanda", "The Trees & Fog", "Tale of Custard the Dragon", "For Anne Gregory"],
-                "Footprints Without Feet": ["A Triumph of Surgery", "The Thief's Story", "The Midnight Visitor", "A Question of Trust", "Footprints Without Feet", "The Making of a Scientist", "The Necklace", "Bholi", "The Book That Saved the Earth"],
-                "Reading & Grammar": ["Unseen Passages", "Grammar (Tenses, Modals, Speech)", "Analytical Paragraphs & Letters"]
+                "First Flight (Prose)": [
+                    { name: "A Letter to God", weight: 1.0 }, { name: "Nelson Mandela", weight: 1.5 }, { name: "Two Stories about Flying", weight: 1.0 }, { name: "From the Diary of Anne Frank", weight: 1.0 }, { name: "Glimpses of India", weight: 1.5 }, { name: "Mijbil the Otter", weight: 1.0 }, { name: "Madam Rides the Bus", weight: 1.0 }, { name: "The Sermon at Benares", weight: 1.0 }, { name: "The Proposal", weight: 1.5 }
+                ],
+                "First Flight (Poetry)": [
+                    { name: "All 10 Poems", weight: 2.5 }
+                ],
+                "Footprints Without Feet": [
+                    { name: "All 9 Stories", weight: 3.0 }
+                ],
+                "Reading & Grammar": [
+                    { name: "Unseen Passages", weight: 1.5 }, { name: "Grammar (Tenses, Modals, Speech)", weight: 2.5 }, { name: "Analytical Paragraphs & Letters", weight: 2.0 }
+                ]
             },
             "Hindi (Course A)": {
-                "Kshitij (Prose)": ["Netaji Ka Chashma", "Balgobin Bhagat", "Lakhnavi Andaaz", "Ek Kahani Yeh Bhi", "Naubatkhane Mein Ibadat", "Sanskriti"],
-                "Kshitij (Poetry)": ["Surdas Ke Pad", "Ram-Lakshman-Parshuram Samvad", "Aatmakathya", "Utsah & Aat Nahi Rahi Hai", "Yeh Danturit Muskaan & Fasal", "Sangatkar"],
-                "Kritika": ["Mata Ka Aanchal", "Sana-Sana Hath Jodi", "Main Kyon Likhta Hoon"],
-                "Vyakaran & Lekhan": ["Vyakaran (Grammar Elements)", "Patra & Anucched Lekhan", "Apathit Bodh"]
+                "Kshitij (Prose & Poetry)": [
+                    { name: "All Prose Chapters", weight: 3.0 }, { name: "All Poetry Chapters", weight: 3.0 }
+                ],
+                "Kritika": [
+                    { name: "Mata Ka Aanchal", weight: 1.0 }, { name: "Sana-Sana Hath Jodi", weight: 1.0 }, { name: "Main Kyon Likhta Hoon", weight: 1.0 }
+                ],
+                "Vyakaran & Lekhan": [
+                    { name: "Vyakaran (Grammar Elements)", weight: 2.5 }, { name: "Patra & Anucched Lekhan", weight: 2.0 }, { name: "Apathit Bodh", weight: 1.0 }
+                ]
             },
             "IT (402)": {
-                "Employability Skills": ["Communication Skills-II", "Self-Management Skills-II", "ICT Skills-II", "Entrepreneurial Skills-II", "Green Skills-II"],
-                "Subject Specific Skills": ["Digital Documentation (Advanced)", "Electronic Spreadsheet (Advanced)", "Database Management System", "Maintain Health, Safety & Secure Environment"],
-                "Practicals": ["Practical Exam Tasks", "Project Work / Field Visit", "Viva Voce & Portfolio"]
+                "Employability Skills": [
+                    { name: "Communication Skills-II", weight: 0.5 }, { name: "Self-Management Skills-II", weight: 0.5 }, { name: "ICT Skills-II", weight: 0.5 }, { name: "Entrepreneurial Skills-II", weight: 0.5 }, { name: "Green Skills-II", weight: 0.5 }
+                ],
+                "Subject Specific Skills": [
+                    { name: "Digital Documentation (Advanced)", weight: 2.0 }, { name: "Electronic Spreadsheet (Advanced)", weight: 2.0 }, { name: "Database Management System", weight: 2.5 }, { name: "Maintain Health, Safety & Secure Environment", weight: 1.0 }
+                ],
+                "Practicals": [
+                    { name: "Practical Exam Tasks & Portfolio", weight: 3.0 }
+                ]
             }
         };
 
         let savedProgress = JSON.parse(localStorage.getItem('proTrackerData')) || {};
         const tabsContainer = document.getElementById('tabs-container');
         const contentContainer = document.getElementById('content-container');
-        let currentSubject = "Science"; // Default load
+        let currentSubject = "Mathematics"; // Default load
 
-        // Save to browser
         function saveProgress() {
             localStorage.setItem('proTrackerData', JSON.stringify(savedProgress));
             updateOverallProgress();
         }
 
-        // Generate the UI dynamically
         function initApp() {
             Object.keys(syllabus).forEach(subject => {
-                // Create Sidebar Tab
                 const tabBtn = document.createElement('button');
                 tabBtn.className = `tab-btn ${subject === currentSubject ? 'active' : ''}`;
                 tabBtn.innerText = subject;
@@ -144,16 +233,13 @@
             updateOverallProgress();
         }
 
-        // Load content for clicked subject
         function loadSubject(subject, btnElement) {
             currentSubject = subject;
             document.getElementById('current-subject-title').innerText = subject;
             
-            // Update Tab Styling
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if(btnElement) btnElement.classList.add('active');
 
-            // Build Main Content
             contentContainer.innerHTML = '';
             const subSubjects = syllabus[subject];
 
@@ -163,8 +249,7 @@
                 groupDiv.innerHTML = `<h3>${subSubject}</h3>`;
 
                 chapters.forEach(chapter => {
-                    // Create unique ID for each chapter
-                    const chapterId = `${subject}-${subSubject}-${chapter.replace(/[\s&/]/g, '')}`;
+                    const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/]/g, '')}`;
                     
                     const rowDiv = document.createElement('div');
                     rowDiv.className = 'chapter-row';
@@ -176,7 +261,7 @@
 
                     const label = document.createElement('label');
                     label.htmlFor = chapterId;
-                    label.innerText = chapter;
+                    label.innerHTML = `<span>${chapter.name}</span> <span class="weight-badge">Weight: ${chapter.weight}</span>`;
                     if(checkbox.checked) label.classList.add('completed-text');
 
                     checkbox.addEventListener('change', (e) => {
@@ -195,29 +280,45 @@
                 });
                 contentContainer.appendChild(groupDiv);
             }
+            updateOverallProgress();
+            
+            // Scroll to top of content on mobile when switching subjects
+            if(window.innerWidth <= 768) {
+                document.querySelector('.main-content').scrollTop = 0;
+            }
         }
 
-        // Calculate overarching progress across all subjects
         function updateOverallProgress() {
-            let totalChapters = 0;
-            let completedChapters = 0;
+            let totalOverallWeight = 0;
+            let completedOverallWeight = 0;
+            let totalSubjectWeight = 0;
+            let completedSubjectWeight = 0;
 
             for (const subject in syllabus) {
                 for (const subSubject in syllabus[subject]) {
                     syllabus[subject][subSubject].forEach(chapter => {
-                        totalChapters++;
-                        const chapterId = `${subject}-${subSubject}-${chapter.replace(/[\s&/]/g, '')}`;
-                        if (savedProgress[chapterId]) completedChapters++;
+                        const weight = chapter.weight;
+                        totalOverallWeight += weight;
+                        if (subject === currentSubject) totalSubjectWeight += weight;
+
+                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/]/g, '')}`;
+                        if (savedProgress[chapterId]) {
+                            completedOverallWeight += weight;
+                            if (subject === currentSubject) completedSubjectWeight += weight;
+                        }
                     });
                 }
             }
 
-            const percent = totalChapters === 0 ? 0 : Math.round((completedChapters / totalChapters) * 100);
-            document.getElementById('overall-progress-bar').style.width = `${percent}%`;
-            document.getElementById('overall-progress-text').innerText = `${percent}% of Class 10 Completed`;
+            const subjectPercent = totalSubjectWeight === 0 ? 0 : Math.round((completedSubjectWeight / totalSubjectWeight) * 100);
+            document.getElementById('subject-progress-bar').style.width = `${subjectPercent}%`;
+            document.getElementById('subject-progress-text').innerText = `${currentSubject}: ${subjectPercent}% Completed`;
+
+            const overallPercent = totalOverallWeight === 0 ? 0 : Math.round((completedOverallWeight / totalOverallWeight) * 100);
+            document.getElementById('overall-progress-bar').style.width = `${overallPercent}%`;
+            document.getElementById('overall-progress-text').innerText = `Master Progress: ${overallPercent}%`;
         }
 
-        // Export Progress as a Text File
         function downloadReport() {
             let report = "===================================\n";
             report += "  CLASS 10 PROGRESS REPORT\n";
@@ -228,9 +329,9 @@
                 for (const subSubject in syllabus[subject]) {
                     report += `  - ${subSubject}:\n`;
                     syllabus[subject][subSubject].forEach(chapter => {
-                        const chapterId = `${subject}-${subSubject}-${chapter.replace(/[\s&/]/g, '')}`;
+                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/]/g, '')}`;
                         const status = savedProgress[chapterId] ? "[✔] DONE" : "[ ] Pending";
-                        report += `      ${status} - ${chapter}\n`;
+                        report += `      ${status} - ${chapter.name}\n`;
                     });
                 }
                 report += "\n";
@@ -238,7 +339,6 @@
             
             report += "Generated by Big Brother OS.";
 
-            // Create a Blob and download it
             const blob = new Blob([report], { type: 'text/plain' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
@@ -248,7 +348,6 @@
             document.body.removeChild(link);
         }
 
-        // Start App
         initApp();
     </script>
 </body>
