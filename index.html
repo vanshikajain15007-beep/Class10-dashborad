@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Pro Dashboard</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-dark: #0f172a;
+            --bg-panel: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+        /* Sidebar UI */
+        .sidebar { width: 250px; background-color: var(--bg-panel); padding: 20px; display: flex; flex-direction: column; border-right: 1px solid #334155; }
+        .sidebar h2 { color: var(--primary); font-size: 24px; margin-bottom: 30px; letter-spacing: 1px; }
+        .tab-btn { background: transparent; color: var(--text-muted); border: none; padding: 12px 15px; text-align: left; font-size: 16px; font-weight: 600; cursor: pointer; border-radius: 8px; margin-bottom: 8px; transition: all 0.2s; }
+        .tab-btn:hover { background-color: #334155; color: var(--text-main); }
+        .tab-btn.active { background-color: var(--primary); color: white; }
+        
+        .download-btn { margin-top: auto; background-color: var(--success); color: white; border: none; padding: 12px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; text-align: center; }
+        .download-btn:hover { background-color: #059669; transform: translateY(-2px); }
+
+        /* Main Content UI */
+        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .header h1 { font-size: 32px; }
+        
+        .progress-container { width: 300px; background-color: #334155; border-radius: 20px; overflow: hidden; height: 24px; position: relative; }
+        .progress-bar { height: 100%; background-color: var(--success); width: 0%; transition: width 0.5s ease-in-out; }
+        .progress-text { position: absolute; top: 0; left: 0; width: 100%; text-align: center; font-size: 14px; font-weight: bold; line-height: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in; }
+
+        /* Sub-Subject Cards */
+        .sub-subject { background: rgba(255, 255, 255, 0.03); border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .sub-subject h3 { color: #818cf8; margin-bottom: 15px; font-size: 20px; border-bottom: 1px solid #334155; padding-bottom: 8px; }
+        
+        /* Checkbox styling */
+        .chapter-row { display: flex; align-items: center; padding: 10px; background: rgba(0,0,0,0.2); margin-bottom: 8px; border-radius: 6px; transition: 0.2s; }
+        .chapter-row:hover { background: rgba(255,255,255,0.05); }
+        .chapter-row label { flex-grow: 1; cursor: pointer; padding-left: 15px; font-size: 16px; }
+        input[type="checkbox"] { appearance: none; width: 22px; height: 22px; border: 2px solid var(--primary); border-radius: 4px; background: transparent; cursor: pointer; position: relative; transition: 0.2s; }
+        input[type="checkbox"]:checked { background: var(--primary); }
+        input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 14px; left: 4px; top: 0px; }
+        .completed-text { text-decoration: line-through; color: var(--text-muted); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Big Brother OS</h2>
+        <div id="tabs-container">
+            <!-- Subject Tabs Injected Here -->
+        </div>
+        <button class="download-btn" onclick="downloadReport()">📥 Download My Report</button>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1 id="current-subject-title">Select a Subject</h1>
+            <div class="progress-container">
+                <div class="progress-bar" id="overall-progress-bar"></div>
+                <div class="progress-text" id="overall-progress-text">0% Completed</div>
+            </div>
+        </div>
+        
+        <div id="content-container">
+            <!-- Chapters Injected Here -->
+        </div>
+    </div>
+
+    <script>
+        // Phase 1: Nested Data Structure
+        const syllabus = {
+            "Science": {
+                "Physics": ["Light (Reflection & Refraction)", "The Human Eye", "Electricity", "Magnetic Effects of Current"],
+                "Chemistry": ["Chemical Reactions and Equations", "Acids, Bases and Salts", "Metals and Non-metals", "Carbon and its Compounds"],
+                "Biology": ["Life Processes", "Control and Coordination", "How do Organisms Reproduce", "Heredity", "Our Environment"]
+            },
+            "Social Science": {
+                "History": ["Nationalism in Europe", "Nationalism in India", "Making of a Global World", "Print Culture"],
+                "Geography": ["Resources & Development", "Water Resources", "Agriculture", "Minerals & Energy", "Manufacturing", "Lifelines of Economy"],
+                "Civics": ["Power Sharing", "Federalism", "Gender, Religion, Caste", "Political Parties", "Outcomes of Democracy"],
+                "Economics": ["Development", "Sectors of Indian Economy", "Money and Credit", "Globalisation", "Consumer Rights"]
+            },
+            "Mathematics": {
+                "Algebra & Numbers": ["Real Numbers", "Polynomials", "Pair of Linear Equations", "Quadratic Equations", "Arithmetic Progressions"],
+                "Geometry": ["Coordinate Geometry", "Triangles", "Circles", "Areas Related to Circles", "Surface Areas and Volumes"],
+                "Trigonometry & Stats": ["Intro to Trigonometry", "Heights and Distances", "Statistics", "Probability"]
+            }
+        };
+
+        let savedProgress = JSON.parse(localStorage.getItem('proTrackerData')) || {};
+        const tabsContainer = document.getElementById('tabs-container');
+        const contentContainer = document.getElementById('content-container');
+        let currentSubject = "Science"; // Default load
+
+        // Save to browser
+        function saveProgress() {
+            localStorage.setItem('proTrackerData', JSON.stringify(savedProgress));
+            updateOverallProgress();
+        }
+
+        // Generate the UI dynamically
+        function initApp() {
+            Object.keys(syllabus).forEach(subject => {
+                // Create Sidebar Tab
+                const tabBtn = document.createElement('button');
+                tabBtn.className = `tab-btn ${subject === currentSubject ? 'active' : ''}`;
+                tabBtn.innerText = subject;
+                tabBtn.onclick = (e) => loadSubject(subject, e.target);
+                tabsContainer.appendChild(tabBtn);
+            });
+            loadSubject(currentSubject, tabsContainer.firstChild);
+            updateOverallProgress();
+        }
+
+        // Load content for clicked subject
+        function loadSubject(subject, btnElement) {
+            currentSubject = subject;
+            document.getElementById('current-subject-title').innerText = subject;
+            
+            // Update Tab Styling
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            // Build Main Content
+            contentContainer.innerHTML = '';
+            const subSubjects = syllabus[subject];
+
+            for (const [subSubject, chapters] of Object.entries(subSubjects)) {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'sub-subject';
+                groupDiv.innerHTML = `<h3>${subSubject}</h3>`;
+
+                chapters.forEach(chapter => {
+                    // Create unique ID for each chapter
+                    const chapterId = `${subject}-${subSubject}-${chapter.replace(/\s+/g, '')}`;
+                    
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'chapter-row';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = chapterId;
+                    checkbox.checked = savedProgress[chapterId] || false;
+
+                    const label = document.createElement('label');
+                    label.htmlFor = chapterId;
+                    label.innerText = chapter;
+                    if(checkbox.checked) label.classList.add('completed-text');
+
+                    checkbox.addEventListener('change', (e) => {
+                        savedProgress[chapterId] = e.target.checked;
+                        if(e.target.checked) {
+                            label.classList.add('completed-text');
+                        } else {
+                            label.classList.remove('completed-text');
+                        }
+                        saveProgress();
+                    });
+
+                    rowDiv.appendChild(checkbox);
+                    rowDiv.appendChild(label);
+                    groupDiv.appendChild(rowDiv);
+                });
+                contentContainer.appendChild(groupDiv);
+            }
+        }
+
+        // Calculate overarching progress across all subjects
+        function updateOverallProgress() {
+            let totalChapters = 0;
+            let completedChapters = 0;
+
+            for (const subject in syllabus) {
+                for (const subSubject in syllabus[subject]) {
+                    syllabus[subject][subSubject].forEach(chapter => {
+                        totalChapters++;
+                        const chapterId = `${subject}-${subSubject}-${chapter.replace(/\s+/g, '')}`;
+                        if (savedProgress[chapterId]) completedChapters++;
+                    });
+                }
+            }
+
+            const percent = totalChapters === 0 ? 0 : Math.round((completedChapters / totalChapters) * 100);
+            document.getElementById('overall-progress-bar').style.width = `${percent}%`;
+            document.getElementById('overall-progress-text').innerText = `${percent}% of Class 10 Completed`;
+        }
+
+        // Export Progress as a Text File
+        function downloadReport() {
+            let report = "===================================\n";
+            report += "  CLASS 10 PROGRESS REPORT\n";
+            report += "===================================\n\n";
+
+            for (const subject in syllabus) {
+                report += `[ ${subject.toUpperCase()} ]\n`;
+                for (const subSubject in syllabus[subject]) {
+                    report += `  - ${subSubject}:\n`;
+                    syllabus[subject][subSubject].forEach(chapter => {
+                        const chapterId = `${subject}-${subSubject}-${chapter.replace(/\s+/g, '')}`;
+                        const status = savedProgress[chapterId] ? "[✔] DONE" : "[ ] Pending";
+                        report += `      ${status} - ${chapter}\n`;
+                    });
+                }
+                report += "\n";
+            }
+            
+            report += "Generated by Big Brother OS.";
+
+            // Create a Blob and download it
+            const blob = new Blob([report], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "My_Study_Progress.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Start App
+        initApp();
+    </script>
+</body>
+</html>
