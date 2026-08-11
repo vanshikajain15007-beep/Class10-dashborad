@@ -19,7 +19,7 @@
         
         body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100dvh; overflow: hidden; }
 
-        /* Sidebar UI (Desktop/Tablet) */
+        /* Sidebar UI */
         .sidebar { width: 280px; background-color: var(--bg-panel); padding: 24px; display: flex; flex-direction: column; border-right: 1px solid #334155; z-index: 10; }
         .sidebar h2 { color: var(--primary); font-size: 26px; margin-bottom: 15px; letter-spacing: 1px; font-weight: 800; }
         
@@ -64,39 +64,23 @@
         input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 18px; left: 4px; top: -1px; }
         .completed-text { text-decoration: line-through; color: var(--text-muted); opacity: 0.7; }
 
-        /* =========================================
-           MOBILE RESPONSIVE DESIGN (The Magic) 
-           ========================================= */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            
-            /* Morph sidebar into a slick top navigation */
             .sidebar { width: 100%; padding: 20px 15px 10px 15px; border-right: none; border-bottom: 1px solid #334155; background: rgba(30, 41, 59, 0.98); z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
             .sidebar h2 { font-size: 22px; text-align: center; margin-bottom: 12px; }
-            
             .sidebar-progress-container { margin-bottom: 12px; padding-bottom: 12px; }
-            
-            /* Convert vertical tabs into horizontal swiping chips! */
             #tabs-container { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 5px; scrollbar-width: none; scroll-snap-type: x mandatory; }
             #tabs-container::-webkit-scrollbar { display: none; }
             .tab-btn { text-align: center; padding: 10px 20px; border-radius: 30px; font-size: 14px; flex-shrink: 0; scroll-snap-align: start; margin-bottom: 0; }
-            
-            /* Floating Action Button for Mobile */
             .download-btn { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 1000; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); }
-            .download-btn:hover { transform: translateX(-50%) translateY(-3px); }
-
-            /* Adjust main content for smaller screens */
-            .main-content { padding: 25px 20px 100px 20px; /* Extra bottom padding so chapters aren't hidden by the floating button */ }
+            .main-content { padding: 25px 20px 100px 20px; }
             .header h1 { font-size: 28px; }
-            
-            /* Tweak card sizes */
             .sub-subject { padding: 18px; border-radius: 12px; margin-bottom: 20px; }
             .sub-subject h3 { font-size: 19px; }
             .chapter-row { padding: 12px; }
             .chapter-row label { font-size: 15px; padding-left: 12px; flex-direction: column; align-items: flex-start; gap: 6px; }
             .weight-badge { align-self: flex-start; }
-            
-            /* Disable hover animations on touch screens */
             .chapter-row:hover { transform: none; }
         }
     </style>
@@ -113,10 +97,7 @@
             </div>
         </div>
 
-        <div id="tabs-container">
-            <!-- Subject Tabs Injected Here -->
-        </div>
-        
+        <div id="tabs-container"></div>
         <button class="download-btn" onclick="downloadReport()">📥 Download Report</button>
     </div>
 
@@ -128,14 +109,11 @@
                 <div class="progress-text" id="subject-progress-text">0% Completed</div>
             </div>
         </div>
-        
-        <div id="content-container">
-            <!-- Chapters Injected Here -->
-        </div>
+        <div id="content-container"></div>
     </div>
 
     <script>
-        // Weighted Data Structure
+        // Highly Detailed & Fully Expanded Weighted Data Structure
         const syllabus = {
             "Mathematics": {
                 "Algebra & Numbers": [
@@ -175,27 +153,33 @@
             },
             "English": {
                 "First Flight (Prose)": [
-                    { name: "A Letter to God", weight: 1.0 }, { name: "Nelson Mandela", weight: 1.5 }, { name: "Two Stories about Flying", weight: 1.0 }, { name: "From the Diary of Anne Frank", weight: 1.0 }, { name: "Glimpses of India", weight: 1.5 }, { name: "Mijbil the Otter", weight: 1.0 }, { name: "Madam Rides the Bus", weight: 1.0 }, { name: "The Sermon at Benares", weight: 1.0 }, { name: "The Proposal", weight: 1.5 }
+                    { name: "A Letter to God", weight: 1.0 }, { name: "Nelson Mandela: Long Walk to Freedom", weight: 1.5 }, { name: "Two Stories about Flying", weight: 1.0 }, { name: "From the Diary of Anne Frank", weight: 1.0 }, { name: "Glimpses of India", weight: 1.5 }, { name: "Mijbil the Otter", weight: 1.0 }, { name: "Madam Rides the Bus", weight: 1.0 }, { name: "The Sermon at Benares", weight: 1.0 }, { name: "The Proposal", weight: 1.5 }
                 ],
                 "First Flight (Poetry)": [
-                    { name: "All 10 Poems", weight: 2.5 }
+                    { name: "Dust of Snow", weight: 0.5 }, { name: "Fire and Ice", weight: 0.5 }, { name: "A Tiger in the Zoo", weight: 0.5 }, { name: "How to Tell Wild Animals", weight: 0.5 }, { name: "The Ball Poem", weight: 0.5 }, { name: "Amanda!", weight: 0.5 }, { name: "The Trees", weight: 0.5 }, { name: "Fog", weight: 0.5 }, { name: "The Tale of Custard the Dragon", weight: 1.0 }, { name: "For Anne Gregory", weight: 0.5 }
                 ],
                 "Footprints Without Feet": [
-                    { name: "All 9 Stories", weight: 3.0 }
+                    { name: "A Triumph of Surgery", weight: 1.0 }, { name: "The Thief's Story", weight: 1.0 }, { name: "The Midnight Visitor", weight: 1.0 }, { name: "A Question of Trust", weight: 1.0 }, { name: "Footprints without Feet", weight: 1.0 }, { name: "The Making of a Scientist", weight: 1.0 }, { name: "The Necklace", weight: 1.0 }, { name: "Bholi", weight: 1.0 }, { name: "The Book That Saved the Earth", weight: 1.5 }
                 ],
                 "Reading & Grammar": [
-                    { name: "Unseen Passages", weight: 1.5 }, { name: "Grammar (Tenses, Modals, Speech)", weight: 2.5 }, { name: "Analytical Paragraphs & Letters", weight: 2.0 }
+                    { name: "Unseen Passages (Discursive & Case-based)", weight: 2.0 }, { name: "Grammar: Tenses", weight: 1.0 }, { name: "Grammar: Modals", weight: 1.0 }, { name: "Grammar: Subject-Verb Concord", weight: 1.0 }, { name: "Grammar: Reported Speech", weight: 1.0 }, { name: "Grammar: Determiners", weight: 1.0 }, { name: "Writing: Formal Letters", weight: 1.5 }, { name: "Writing: Analytical Paragraphs", weight: 1.5 }
                 ]
             },
             "Hindi (Course A)": {
-                "Kshitij (Prose & Poetry)": [
-                    { name: "All Prose Chapters", weight: 3.0 }, { name: "All Poetry Chapters", weight: 3.0 }
+                "Kshitij (Prose - गद्य खंड)": [
+                    { name: "Netaji Ka Chashma", weight: 1.0 }, { name: "Balgobin Bhagat", weight: 1.0 }, { name: "Lakhnavi Andaaz", weight: 1.0 }, { name: "Ek Kahani Yeh Bhi", weight: 1.0 }, { name: "Naubatkhane Mein Ibadat", weight: 1.0 }, { name: "Sanskriti", weight: 1.0 }
+                ],
+                "Kshitij (Poetry - काव्य खंड)": [
+                    { name: "Surdas Ke Pad", weight: 1.0 }, { name: "Ram-Lakshman-Parshuram Samvad", weight: 1.5 }, { name: "Aatmakathya", weight: 1.0 }, { name: "Utsah & Aat Nahi Rahi Hai", weight: 1.0 }, { name: "Yeh Danturit Muskaan & Fasal", weight: 1.0 }, { name: "Sangatkar", weight: 1.0 }
                 ],
                 "Kritika": [
-                    { name: "Mata Ka Aanchal", weight: 1.0 }, { name: "Sana-Sana Hath Jodi", weight: 1.0 }, { name: "Main Kyon Likhta Hoon", weight: 1.0 }
+                    { name: "Mata Ka Aanchal", weight: 1.0 }, { name: "Sana-Sana Hath Jodi", weight: 1.5 }, { name: "Main Kyon Likhta Hoon", weight: 1.0 }
                 ],
-                "Vyakaran & Lekhan": [
-                    { name: "Vyakaran (Grammar Elements)", weight: 2.5 }, { name: "Patra & Anucched Lekhan", weight: 2.0 }, { name: "Apathit Bodh", weight: 1.0 }
+                "Vyakaran (Grammar)": [
+                    { name: "Rachna Ke Aadhar Par Vakya Bhed", weight: 1.5 }, { name: "Vachya (Voice)", weight: 1.0 }, { name: "Pad Parichay", weight: 1.5 }, { name: "Alankar (Shabdalankar & Arthalankar)", weight: 1.5 }
+                ],
+                "Lekhan (Writing) & Reading": [
+                    { name: "Apathit Gadyansh / Kavyansh", weight: 1.5 }, { name: "Anucched Lekhan", weight: 1.5 }, { name: "Patra Lekhan (Formal/Informal)", weight: 1.5 }, { name: "Swa-vritt (Resume) / E-mail Lekhan", weight: 1.5 }, { name: "Vigyapan / Sandesh Lekhan", weight: 1.5 }
                 ]
             },
             "IT (402)": {
@@ -249,7 +233,7 @@
                 groupDiv.innerHTML = `<h3>${subSubject}</h3>`;
 
                 chapters.forEach(chapter => {
-                    const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/]/g, '')}`;
+                    const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/()!-:,\']/g, '')}`;
                     
                     const rowDiv = document.createElement('div');
                     rowDiv.className = 'chapter-row';
@@ -282,7 +266,6 @@
             }
             updateOverallProgress();
             
-            // Scroll to top of content on mobile when switching subjects
             if(window.innerWidth <= 768) {
                 document.querySelector('.main-content').scrollTop = 0;
             }
@@ -301,7 +284,7 @@
                         totalOverallWeight += weight;
                         if (subject === currentSubject) totalSubjectWeight += weight;
 
-                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/]/g, '')}`;
+                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/()!-:,\']/g, '')}`;
                         if (savedProgress[chapterId]) {
                             completedOverallWeight += weight;
                             if (subject === currentSubject) completedSubjectWeight += weight;
@@ -329,7 +312,7 @@
                 for (const subSubject in syllabus[subject]) {
                     report += `  - ${subSubject}:\n`;
                     syllabus[subject][subSubject].forEach(chapter => {
-                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/]/g, '')}`;
+                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/()!-:,\']/g, '')}`;
                         const status = savedProgress[chapterId] ? "[✔] DONE" : "[ ] Pending";
                         report += `      ${status} - ${chapter.name}\n`;
                     });
