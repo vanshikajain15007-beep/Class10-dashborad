@@ -46,11 +46,11 @@
         .tab-btn.active { background-color: var(--primary); color: white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
         
         .analytics-btn { background-color: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); margin-bottom: 5px; }
-        .analytics-btn.active { background-color: var(--success); color: white; border-color: var(--success); }
+        .analytics-btn.active { background-color: var(--success); color: white; border-color: var(--success); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
         .focus-btn { background-color: rgba(245, 158, 11, 0.1); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); margin-bottom: 5px; }
-        .focus-btn.active { background-color: var(--warning); color: white; border-color: var(--warning); }
+        .focus-btn.active { background-color: var(--warning); color: white; border-color: var(--warning); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
         .leaderboard-btn { background-color: rgba(168, 85, 247, 0.1); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); margin-bottom: 15px; }
-        .leaderboard-btn.active { background-color: #a855f7; color: white; border-color: #a855f7; }
+        .leaderboard-btn.active { background-color: #a855f7; color: white; border-color: #a855f7; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3); }
 
         .download-btn { margin-top: auto; background-color: #334155; color: white; border: none; padding: 16px 20px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-align: center; font-size: 16px; }
         .download-btn:hover { background-color: #475569; transform: translateY(-3px); }
@@ -81,35 +81,55 @@
         input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 18px; left: 4px; top: -1px; }
         .completed-text { text-decoration: line-through; color: var(--text-muted); opacity: 0.7; }
 
-        /* Views (Leaderboard, Analytics, Focus) - Hidden for brevity in CSS, identical to Phase 4 */
-        #leaderboard-container, #analytics-container, #focus-container { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.4s ease; }
+        /* Leaderboard View */
+        #leaderboard-container { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.4s ease; }
         .leaderboard-card { background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; transition: 0.3s; }
+        .leaderboard-card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.05); }
         .rank-badge { font-size: 24px; font-weight: 900; width: 50px; text-align: center; color: #64748b; }
         .rank-1 .rank-badge { color: var(--gold); text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+        .rank-2 .rank-badge { color: #cbd5e1; }
+        .rank-3 .rank-badge { color: #b45309; }
         .squad-info { flex-grow: 1; padding-left: 20px; }
         .squad-name { font-size: 22px; font-weight: 800; color: white; margin-bottom: 5px; }
         .squad-stats { display: flex; gap: 20px; font-size: 15px; color: var(--text-muted); font-weight: 600; }
-        .ai-insight-card { background: linear-gradient(145deg, rgba(239, 68, 68, 0.1) 0%, rgba(15, 23, 42, 0.5) 100%); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 30px; }
+
+        /* Analytics View */
+        #analytics-container { display: none; flex-direction: column; gap: 30px; animation: fadeIn 0.4s ease; }
+        .ai-insight-card { background: linear-gradient(145deg, rgba(239, 68, 68, 0.1) 0%, rgba(15, 23, 42, 0.5) 100%); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 30px; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.1); }
+        .ai-insight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--danger); }
+        .ai-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .ai-header h2 { color: var(--danger); font-size: 24px; font-weight: 800; }
+        .ai-message { font-size: 18px; line-height: 1.6; color: var(--text-main); font-weight: 500; }
+        .ai-message span { color: var(--warning); font-weight: bold; }
         .chart-card { background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; border-radius: 16px; padding: 30px; }
+        .chart-card h3 { color: white; margin-bottom: 20px; font-size: 22px; }
         .chart-wrapper { position: relative; height: 300px; width: 100%; }
-        .focus-card { background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; border-radius: 20px; padding: 40px; max-width: 500px; width: 100%; text-align: center; margin: 0 auto; }
+
+        /* Focus Mode Styles */
+        #focus-container { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; animation: fadeIn 0.4s ease; text-align: center; }
+        .focus-card { background: rgba(255, 255, 255, 0.02); border: 1px solid #334155; border-radius: 20px; padding: 40px; max-width: 500px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .focus-card h2 { color: var(--warning); font-size: 28px; margin-bottom: 15px; font-weight: 800; }
+        .focus-card p { color: var(--text-muted); font-size: 16px; margin-bottom: 30px; line-height: 1.5; }
         .focus-controls { display: flex; justify-content: space-around; margin-bottom: 30px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; }
-        .focus-input { background: #0f172a; border: 1px solid var(--warning); color: var(--warning); padding: 12px; border-radius: 8px; font-size: 20px; width: 100px; text-align: center; }
-        .timer-display { font-size: 70px; font-weight: 900; color: white; margin: 20px 0; display: none; }
-        .start-focus-btn { background: var(--warning); color: #0f172a; border: none; padding: 16px 30px; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; width: 100%; }
+        .input-group { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .input-group label { font-size: 14px; font-weight: 600; color: #cbd5e1; text-transform: uppercase; }
+        .focus-input { background: #0f172a; border: 1px solid var(--warning); color: var(--warning); padding: 12px; border-radius: 8px; font-size: 20px; width: 100px; text-align: center; font-weight: bold; outline: none; }
+        .timer-display { font-size: 70px; font-weight: 900; color: white; font-variant-numeric: tabular-nums; margin: 20px 0; text-shadow: 0 0 20px rgba(245, 158, 11, 0.5); display: none; }
+        .start-focus-btn { background: var(--warning); color: #0f172a; border: none; padding: 16px 30px; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; width: 100%; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .start-focus-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4); }
 
         /* Overlays & Toasts */
         .full-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px; }
         #penalty-overlay { background: rgba(220, 38, 38, 0.95); animation: flashRed 0.3s ease-out; }
         #success-overlay { background: rgba(16, 185, 129, 0.95); animation: fadeIn 0.5s ease-out; }
+        #penalty-overlay h1, #success-overlay h1 { font-size: 60px; margin-bottom: 20px; font-weight: 900; text-transform: uppercase; text-shadow: 2px 2px 0 #000; }
+        #penalty-overlay p, #success-overlay p { font-size: 24px; font-weight: 600; max-width: 600px; line-height: 1.5; }
         .overlay-btn { margin-top: 40px; padding: 15px 30px; background: white; color: var(--danger); border: none; border-radius: 12px; font-weight: 900; font-size: 18px; cursor: pointer; text-transform: uppercase; }
         
-        .toast-notification { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: var(--success); color: white; padding: 16px 28px; border-radius: 30px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: bottom 0.4s; z-index: 10000; }
+        .toast-notification { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background-color: var(--success); color: white; padding: 16px 28px; border-radius: 30px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10000; display: flex; align-items: center; gap: 10px; }
         .toast-notification.show { bottom: 40px; }
 
-        /* =========================================
-           QUEST / BOSS FIGHT / NOTES UI
-           ========================================= */
+        /* QUEST: Boss Fight Overlay */
         #quiz-overlay { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); justify-content: flex-start; padding-top: 10vh; }
         .quiz-container { max-width: 600px; width: 100%; background: #1e293b; border: 2px solid var(--primary); border-radius: 20px; padding: 40px; box-shadow: 0 0 40px rgba(79, 70, 229, 0.3); text-align: left; }
         .quiz-header { display: flex; justify-content: space-between; margin-bottom: 20px; color: var(--primary); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
@@ -138,18 +158,45 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; box-shadow: 0 0 10px var(--pink); } 100% { opacity: 1; } }
+        @keyframes flashRed { 0% { background: rgba(255, 0, 0, 1); transform: scale(1.05); } 100% { background: rgba(220, 38, 38, 0.95); transform: scale(1); } }
 
-        /* Hidden PDF Template (Summarized) */
-        #pdf-template { display: none; background: white; color: #1e293b; width: 750px; padding: 40px; }
-        
+        /* Hidden PDF Template */
+        #pdf-template { display: none; background: white; color: #1e293b; width: 750px; max-width: none; padding: 40px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-sizing: border-box; }
+        .pdf-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid var(--primary); }
+        .pdf-header h1 { font-size: 32px; color: var(--primary); font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; }
+        .pdf-stats { display: flex; justify-content: space-around; background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #e2e8f0; }
+        .pdf-stat-box { text-align: center; }
+        .pdf-stat-box span { font-size: 24px; font-weight: 800; display: block; margin-bottom: 5px; }
+        .pdf-stat-box label { font-size: 14px; color: #64748b; text-transform: uppercase; font-weight: 700; }
+        .pdf-subject-section { margin-bottom: 30px; page-break-inside: avoid; } 
+        .pdf-subject-title { background: #f1f5f9; padding: 12px 18px; border-left: 6px solid var(--primary); font-size: 22px; font-weight: 800; color: #334155; margin-bottom: 15px; display: flex; justify-content: space-between; border-radius: 0 8px 8px 0; }
+        .pdf-chapter-list { list-style: none; padding-left: 10px; margin-bottom: 20px; }
+        .pdf-chapter-item { font-size: 15px; padding: 10px 10px; border-bottom: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: flex-start; color: #475569; gap: 15px; }
+        .pdf-chapter-item span:first-child { flex: 1; text-align: left; line-height: 1.4; } 
+        .pdf-chapter-item.done { color: var(--success); font-weight: 700; background: rgba(16, 185, 129, 0.05); }
+        .pdf-footer { text-align: center; margin-top: 50px; font-size: 14px; color: #94a3b8; font-weight: bold; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; padding: 20px 15px 10px 15px; border-right: none; border-bottom: 1px solid #334155; background: rgba(30, 41, 59, 0.98); z-index: 100; }
-            #tabs-container { flex-direction: row; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+            .sidebar { width: 100%; padding: 20px 15px 10px 15px; border-right: none; border-bottom: 1px solid #334155; background: rgba(30, 41, 59, 0.98); z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+            .sidebar h2 { font-size: 22px; text-align: center; margin-bottom: 8px; }
+            .score-badge { display: block; margin: 0 auto 15px auto; width: max-content; }
+            .sidebar-progress-container { margin-bottom: 12px; padding-bottom: 12px; }
+            #tabs-container { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 5px; scrollbar-width: none; scroll-snap-type: x mandatory; }
             #tabs-container::-webkit-scrollbar { display: none; }
-            .tab-btn { flex-shrink: 0; }
-            .download-btn { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 1000; }
+            .tab-btn { text-align: center; padding: 10px 20px; border-radius: 30px; font-size: 14px; flex-shrink: 0; scroll-snap-align: start; margin-bottom: 0; }
+            .analytics-btn, .focus-btn, .leaderboard-btn { margin-bottom: 0; margin-right: 5px; }
+            .download-btn { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+            .toast-notification.show { bottom: 100px; }
             .main-content { padding: 25px 20px 100px 20px; }
+            .header h1 { font-size: 28px; }
+            .sub-subject { padding: 18px; border-radius: 12px; margin-bottom: 20px; }
+            .chapter-row { padding: 12px; }
+            .chapter-row label { font-size: 15px; padding-left: 12px; flex-direction: column; align-items: flex-start; gap: 6px; }
+            .focus-controls { flex-direction: column; gap: 20px; }
+            .timer-display { font-size: 50px; }
+            .leaderboard-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .rank-badge { position: absolute; right: 20px; top: 20px; }
             .quiz-container { padding: 25px; margin: 10px; margin-top: 5vh; }
             .notes-container { margin: 10px; height: 95vh; }
         }
@@ -167,9 +214,7 @@
                 <span id="quiz-progress">Q 1/8</span>
             </div>
             <div class="quiz-question" id="quiz-q-text">Loading question...</div>
-            <div class="quiz-options" id="quiz-options-container">
-                <!-- Buttons injected here -->
-            </div>
+            <div class="quiz-options" id="quiz-options-container"></div>
             <div class="quiz-btn-row">
                 <button class="quiz-next-btn" id="quiz-submit-btn" onclick="submitQuizAnswer()">Lock Answer</button>
             </div>
@@ -183,9 +228,7 @@
                 <h2>✨ Secret Revision Vault</h2>
                 <button class="close-notes-btn" onclick="closeNotes()">×</button>
             </div>
-            <div class="notes-content" id="notes-content-area">
-                <!-- Colorful HTML notes injected here -->
-            </div>
+            <div class="notes-content" id="notes-content-area"></div>
         </div>
     </div>
 
@@ -201,24 +244,39 @@
         <button class="overlay-btn" style="color: var(--success);" onclick="closeSuccess()">Claim Reward</button>
     </div>
 
-    <!-- PDF Template -->
+    <!-- Hidden Multi-Page PDF Template -->
     <div id="pdf-template">
-        <h1 style="color:var(--primary); text-align:center;">🎓 CLASS 10 PROGRESS REPORT</h1>
+        <div class="pdf-header">
+            <h1 id="pdf-name-header">🎓 CLASS 10 PROGRESS REPORT</h1>
+            <p style="color: #64748b; font-weight: 600;">Generated by Big Brother OS</p>
+        </div>
+        <div class="pdf-stats">
+            <div class="pdf-stat-box"><span id="pdf-score" style="color: var(--warning);">🔥 100</span><label>Focus Points</label></div>
+            <div class="pdf-stat-box"><span id="pdf-overall" style="color: var(--primary);">📈 0%</span><label>Syllabus Mastered</label></div>
+            <div class="pdf-stat-box"><span id="pdf-date" style="color: var(--success);">📅 Date</span><label>Report Date</label></div>
+        </div>
         <div id="pdf-content"></div>
+        <div class="pdf-footer">Study hard. The board exams wait for no one.</div>
     </div>
 
     <div class="sidebar">
         <h2>Big Brother OS</h2>
         <div class="score-badge" id="sidebar-score">🔥 Focus Points: 100</div>
+        
         <div class="sidebar-progress-container">
             <span class="sidebar-progress-text" id="overall-progress-text">Overall: 0%</span>
-            <div class="sidebar-progress-track"><div class="sidebar-progress-bar" id="overall-progress-bar"></div></div>
+            <div class="sidebar-progress-track">
+                <div class="sidebar-progress-bar" id="overall-progress-bar"></div>
+            </div>
         </div>
+
         <div id="tabs-container">
             <button class="tab-btn analytics-btn" id="nav-analytics" onclick="openAnalytics()">📊 AI Analytics</button>
             <button class="tab-btn leaderboard-btn" id="nav-leaderboard" onclick="openLeaderboard()">🏆 Leaderboard</button>
             <button class="tab-btn focus-btn" id="nav-focus" onclick="openFocusMode()">🧠 Focus Game</button>
+            <!-- Subject Tabs Injected Here -->
         </div>
+        
         <button class="download-btn" id="dl-btn" onclick="downloadPDFReport()">📄 Download PDF Report</button>
     </div>
 
@@ -230,21 +288,37 @@
                 <div class="progress-text" id="subject-progress-text">0% Completed</div>
             </div>
         </div>
+        
         <div id="content-container"></div>
-        <div id="leaderboard-container"><div style="text-align:center; padding:50px;"><h3>Connecting to Cloud...</h3></div></div>
-        <div id="analytics-container">
-            <div class="ai-insight-card"><h2 style="color:var(--danger)">🤖 Big Brother Analysis</h2><p id="ai-insight-text">Analyzing...</p></div>
-            <div class="chart-card"><canvas id="performanceChart"></canvas></div>
+        
+        <!-- Leaderboard View -->
+        <div id="leaderboard-container">
+            <div style="text-align: center; padding: 50px; color: var(--text-muted);">
+                <h3>Connecting to Cloud...</h3>
+            </div>
         </div>
+
+        <div id="analytics-container">
+            <div class="ai-insight-card">
+                <div class="ai-header"><h2>🤖 Big Brother AI Analysis</h2></div>
+                <p class="ai-message" id="ai-insight-text">Analyzing your study patterns...</p>
+            </div>
+            <div class="chart-card">
+                <h3>Syllabus Distribution</h3>
+                <div class="chart-wrapper"><canvas id="performanceChart"></canvas></div>
+            </div>
+        </div>
+
         <div id="focus-container">
             <div class="focus-card">
                 <h2>The Deep Work Game</h2>
+                <p>Set your study time and pay an Entry Fee in points. If you switch tabs, minimize the browser, or open another app, you fail and lose your fee. Survive the timer, and earn double points back.</p>
                 <div class="focus-controls" id="focus-setup">
-                    <div class="input-group"><label>Mins</label><input type="number" id="focus-mins" class="focus-input" value="25"></div>
-                    <div class="input-group"><label>Fee</label><input type="number" id="focus-wager" class="focus-input" value="10"></div>
+                    <div class="input-group"><label>Minutes</label><input type="number" id="focus-mins" class="focus-input" value="25" min="1" max="120"></div>
+                    <div class="input-group"><label>Entry Fee</label><input type="number" id="focus-wager" class="focus-input" value="10" min="1"></div>
                 </div>
                 <div class="timer-display" id="timer-text">25:00</div>
-                <button class="start-focus-btn" id="start-focus-btn" onclick="startFocusSession()">Lock In</button>
+                <button class="start-focus-btn" id="start-focus-btn" onclick="startFocusSession()">Start Session & Lock In</button>
             </div>
         </div>
     </div>
@@ -278,7 +352,7 @@
         }
 
         // ==========================================
-        // SYLLABUS DATA
+        // SYLLABUS DATA (FULLY RESTORED)
         // ==========================================
         const syllabus = {
             "Mathematics": {
@@ -292,27 +366,36 @@
                 "Biology": [{ name: "Life Processes", weight: 3.0 }, { name: "Control and Coordination", weight: 1.5 }, { name: "How do Organisms Reproduce", weight: 2.0 }, { name: "Heredity", weight: 1.5 }, { name: "Our Environment", weight: 0.5 }]
             },
             "Social Science": {
-                "History": [{ name: "Nationalism in Europe", weight: 3.0 }, { name: "Nationalism in India", weight: 2.5 }, { name: "Making of a Global World", weight: 1.5 }, { name: "Print Culture", weight: 2.0 }],
-                "Geography": [{ name: "Resources & Development", weight: 1.0 }, { name: "Water Resources", weight: 1.0 }, { name: "Agriculture", weight: 1.5 }, { name: "Minerals & Energy", weight: 1.5 }, { name: "Manufacturing", weight: 1.5 }, { name: "Lifelines of Economy", weight: 1.0 }],
+                "History": [{ name: "The Rise of Nationalism in Europe", weight: 3.0 }, { name: "Nationalism in India", weight: 2.5 }, { name: "The Making of a Global World", weight: 1.5 }, { name: "The Age of Industrialisation", weight: 1.5 }, { name: "Print Culture and the Modern World", weight: 2.0 }],
+                "Geography": [{ name: "Resources and Development", weight: 1.0 }, { name: "Forest and Wildlife Resources", weight: 1.0 }, { name: "Water Resources", weight: 1.0 }, { name: "Agriculture", weight: 1.5 }, { name: "Minerals and Energy Resources", weight: 1.5 }, { name: "Manufacturing Industries", weight: 1.5 }, { name: "Lifelines of National Economy", weight: 1.0 }],
                 "Civics": [{ name: "Power Sharing", weight: 1.0 }, { name: "Federalism", weight: 1.5 }, { name: "Gender, Religion, Caste", weight: 1.5 }, { name: "Political Parties", weight: 1.0 }, { name: "Outcomes of Democracy", weight: 1.0 }],
                 "Economics": [{ name: "Development", weight: 1.0 }, { name: "Sectors of Indian Economy", weight: 1.5 }, { name: "Money and Credit", weight: 1.5 }, { name: "Globalisation", weight: 1.0 }, { name: "Consumer Rights", weight: 1.0 }]
             },
             "English": {
-                "First Flight": [{ name: "A Letter to God", weight: 1.0 }, { name: "Nelson Mandela", weight: 1.5 }, { name: "Poetry Section", weight: 2.5 }],
-                "Grammar": [{ name: "Unseen Passages", weight: 2.0 }, { name: "Tenses & Modals", weight: 2.0 }]
+                "First Flight (Prose)": [{ name: "A Letter to God", weight: 1.0 }, { name: "Nelson Mandela: Long Walk to Freedom", weight: 1.5 }, { name: "Two Stories about Flying", weight: 1.0 }, { name: "From the Diary of Anne Frank", weight: 1.0 }, { name: "Glimpses of India", weight: 1.5 }, { name: "Mijbil the Otter", weight: 1.0 }, { name: "Madam Rides the Bus", weight: 1.0 }, { name: "The Sermon at Benares", weight: 1.0 }, { name: "The Proposal", weight: 1.5 }],
+                "First Flight (Poetry)": [{ name: "Dust of Snow", weight: 0.5 }, { name: "Fire and Ice", weight: 0.5 }, { name: "A Tiger in the Zoo", weight: 0.5 }, { name: "How to Tell Wild Animals", weight: 0.5 }, { name: "The Ball Poem", weight: 0.5 }, { name: "Amanda!", weight: 0.5 }, { name: "The Trees", weight: 0.5 }, { name: "Fog", weight: 0.5 }, { name: "The Tale of Custard the Dragon", weight: 1.0 }, { name: "For Anne Gregory", weight: 0.5 }],
+                "Footprints Without Feet": [{ name: "A Triumph of Surgery", weight: 1.0 }, { name: "The Thief's Story", weight: 1.0 }, { name: "The Midnight Visitor", weight: 1.0 }, { name: "A Question of Trust", weight: 1.0 }, { name: "Footprints without Feet", weight: 1.0 }, { name: "The Making of a Scientist", weight: 1.0 }, { name: "The Necklace", weight: 1.0 }, { name: "Bholi", weight: 1.0 }, { name: "The Book That Saved the Earth", weight: 1.5 }],
+                "Reading & Grammar": [{ name: "Unseen Passages", weight: 2.0 }, { name: "Grammar: Tenses", weight: 1.0 }, { name: "Grammar: Modals", weight: 1.0 }, { name: "Grammar: Subject-Verb Concord", weight: 1.0 }, { name: "Grammar: Reported Speech", weight: 1.0 }, { name: "Grammar: Determiners", weight: 1.0 }, { name: "Writing: Formal Letters", weight: 1.5 }, { name: "Writing: Analytical Paragraphs", weight: 1.5 }]
             },
             "Hindi": {
-                "Kshitij": [{ name: "Netaji Ka Chashma", weight: 1.0 }, { name: "Surdas Ke Pad", weight: 1.0 }],
-                "Vyakaran": [{ name: "Vakya Bhed", weight: 1.5 }, { name: "Pad Parichay", weight: 1.5 }]
+                "Kshitij (Prose)": [{ name: "Netaji Ka Chashma", weight: 1.0 }, { name: "Balgobin Bhagat", weight: 1.0 }, { name: "Lakhnavi Andaaz", weight: 1.0 }, { name: "Ek Kahani Yeh Bhi", weight: 1.0 }, { name: "Naubatkhane Mein Ibadat", weight: 1.0 }, { name: "Sanskriti", weight: 1.0 }],
+                "Kshitij (Poetry)": [{ name: "Surdas Ke Pad", weight: 1.0 }, { name: "Ram-Lakshman-Parshuram Samvad", weight: 1.5 }, { name: "Aatmakathya", weight: 1.0 }, { name: "Utsah & Aat Nahi Rahi Hai", weight: 1.0 }, { name: "Yeh Danturit Muskaan & Fasal", weight: 1.0 }, { name: "Sangatkar", weight: 1.0 }],
+                "Kritika": [{ name: "Mata Ka Aanchal", weight: 1.0 }, { name: "Sana-Sana Hath Jodi", weight: 1.5 }, { name: "Main Kyon Likhta Hoon", weight: 1.0 }],
+                "Vyakaran (Grammar)": [{ name: "Vakya Bhed", weight: 1.5 }, { name: "Vachya (Voice)", weight: 1.0 }, { name: "Pad Parichay", weight: 1.5 }, { name: "Alankar", weight: 1.5 }],
+                "Lekhan & Reading": [{ name: "Apathit Gadyansh", weight: 1.5 }, { name: "Anucched Lekhan", weight: 1.5 }, { name: "Patra Lekhan", weight: 1.5 }, { name: "Swa-vritt / E-mail", weight: 1.5 }, { name: "Vigyapan / Sandesh", weight: 1.5 }]
+            },
+            "IT (402)": {
+                "Employability Skills": [{ name: "Communication Skills-II", weight: 0.5 }, { name: "Self-Management Skills-II", weight: 0.5 }, { name: "ICT Skills-II", weight: 0.5 }, { name: "Entrepreneurial Skills-II", weight: 0.5 }, { name: "Green Skills-II", weight: 0.5 }],
+                "Subject Specific Skills": [{ name: "Digital Documentation (Advanced)", weight: 2.0 }, { name: "Electronic Spreadsheet (Advanced)", weight: 2.0 }, { name: "Database Management System", weight: 2.5 }, { name: "Health & Safety", weight: 1.0 }],
+                "Practicals": [{ name: "Practical Exam & Portfolio", weight: 3.0 }]
             }
         };
 
         // ==========================================
         // THE QUEST ENGINE (Data & Notes)
         // ==========================================
-        // This maps the specific chapter ID to an 8-question quiz array
         const questDatabase = {
-            "Science-Physics-LightReflectionRefraction": [
+            "Science-Physics-Light(Reflection&Refraction)": [
                 { q: "What is the speed of light in a vacuum?", opts: ["3 x 10^8 m/s", "3 x 10^5 km/s", "Both A and B", "None of these"], ans: 2 },
                 { q: "The mirror used by dentists to examine teeth is:", opts: ["Convex", "Concave", "Plane", "Cylindrical"], ans: 1 },
                 { q: "If the magnification produced by a lens is -1, the image is:", opts: ["Real and inverted", "Virtual and erect", "Real and magnified", "Virtual and diminished"], ans: 0 },
@@ -324,9 +407,8 @@
             ]
         };
 
-        // The Colorful Short Notes unlocked after winning
         const secretNotesVault = {
-            "Science-Physics-LightReflectionRefraction": `
+            "Science-Physics-Light(Reflection&Refraction)": `
                 <div class="n-title">LIGHT: Reflection & Refraction</div>
                 <div class="n-section">
                     <div class="n-h3">1. Laws of Reflection</div>
@@ -355,12 +437,18 @@
         
         const tabsContainer = document.getElementById('tabs-container');
         const contentContainer = document.getElementById('content-container');
+        const analyticsContainer = document.getElementById('analytics-container');
+        const focusContainer = document.getElementById('focus-container');
+        const leaderboardContainer = document.getElementById('leaderboard-container');
+        const headerProgress = document.getElementById('header-progress');
         let currentSubject = "Mathematics"; 
+        let myChart = null;
 
         // Quest State Variables
         let q_targetChapterId = "";
         let q_targetLabel = null;
         let q_targetCheckbox = null;
+        let q_targetNotesBtn = null;
         let q_currentIndex = 0;
         let q_score = 0;
         let q_selectedOpt = -1;
@@ -379,6 +467,7 @@
         function initApp() {
             updateOverallProgress();
             updateScoreDisplay();
+            
             Object.keys(syllabus).forEach(subject => {
                 const tabBtn = document.createElement('button');
                 tabBtn.className = 'tab-btn nav-subject';
@@ -386,15 +475,15 @@
                 tabBtn.onclick = (e) => loadSubject(subject, e.target);
                 tabsContainer.appendChild(tabBtn);
             });
-            loadSubject("Science", document.querySelectorAll('.nav-subject')[1]); // Load Science first to show off the quest
+            loadSubject("Mathematics", document.querySelectorAll('.nav-subject')[0]);
         }
 
         function resetViews() {
             contentContainer.style.display = 'none';
-            document.getElementById('analytics-container').style.display = 'none';
-            document.getElementById('focus-container').style.display = 'none';
-            document.getElementById('leaderboard-container').style.display = 'none';
-            document.getElementById('header-progress').style.display = 'none';
+            analyticsContainer.style.display = 'none';
+            focusContainer.style.display = 'none';
+            leaderboardContainer.style.display = 'none';
+            headerProgress.style.display = 'none';
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         }
 
@@ -403,7 +492,8 @@
             currentSubject = subject;
             document.getElementById('current-subject-title').innerText = subject;
             contentContainer.style.display = 'block';
-            document.getElementById('header-progress').style.display = 'block';
+            headerProgress.style.display = 'block';
+            
             if(btnElement) btnElement.classList.add('active');
             contentContainer.innerHTML = '';
             
@@ -427,12 +517,9 @@
                     const label = document.createElement('label');
                     label.htmlFor = chapterId;
                     
-                    // Add Quest Badge if a quiz exists for this chapter
                     let questHtml = questDatabase[chapterId] ? `<span class="quest-badge">Boss Fight</span>` : '';
-                    
                     label.innerHTML = `<div><span>${chapter.name}</span> <span class="weight-badge">Wt: ${chapter.weight}</span> ${questHtml}</div>`;
                     
-                    // Add "View Notes" button if completed and notes exist
                     const notesBtn = document.createElement('button');
                     notesBtn.className = 'view-notes-btn';
                     notesBtn.innerText = 'View Notes';
@@ -465,6 +552,7 @@
                 contentContainer.appendChild(groupDiv);
             }
             updateOverallProgress();
+            if(window.innerWidth <= 768) document.querySelector('.main-content').scrollTop = 0;
         }
 
         // ==========================================
@@ -477,7 +565,6 @@
             q_targetNotesBtn = notesBtnElement;
             q_currentIndex = 0;
             q_score = 0;
-            
             document.getElementById('quiz-overlay').style.display = 'flex';
             renderQuestQuestion();
         }
@@ -508,12 +595,9 @@
 
         function submitQuizAnswer() {
             if(q_selectedOpt === -1) return showToast("⚠️ Select an answer first!");
-            
             const quizData = questDatabase[q_targetChapterId];
             if(q_selectedOpt === quizData[q_currentIndex].ans) q_score++;
-            
             q_currentIndex++;
-            
             if(q_currentIndex < quizData.length) {
                 renderQuestQuestion();
             } else {
@@ -523,18 +607,13 @@
 
         function endQuest(totalQs) {
             document.getElementById('quiz-overlay').style.display = 'none';
-            
-            // 75% Pass Rate Requirement (6 out of 8)
             const reqScore = Math.ceil(totalQs * 0.75); 
-            
             if(q_score >= reqScore) {
-                // VICTORY
                 document.getElementById('success-title').innerText = "⚔️ BOSS DEFEATED ⚔️";
                 document.getElementById('success-desc').innerText = `You scored ${q_score}/${totalQs}. Secret Revision Notes Unlocked!`;
                 document.getElementById('success-overlay').style.display = 'flex';
                 finalizeChapterCompletion(q_targetChapterId, q_targetLabel, q_targetCheckbox, q_targetNotesBtn);
             } else {
-                // DEFEAT
                 document.getElementById('penalty-title').innerText = "💀 YOU DIED 💀";
                 document.getElementById('penalty-desc').innerText = `You scored ${q_score}/${totalQs}. You need ${reqScore} to pass. Go read the NCERT textbook and try again.`;
                 document.getElementById('penalty-overlay').style.display = 'flex';
@@ -549,9 +628,6 @@
             saveProgress();
         }
 
-        // ==========================================
-        // NOTES VIEWER
-        // ==========================================
         function openNotes(chapterId) {
             if(!secretNotesVault[chapterId]) return;
             document.getElementById('notes-content-area').innerHTML = secretNotesVault[chapterId];
@@ -559,8 +635,162 @@
         }
         function closeNotes() { document.getElementById('notes-overlay').style.display = 'none'; }
 
+        // ==========================================
+        // LEADERBOARD, ANALYTICS, FOCUS MODE
+        // ==========================================
+        function openLeaderboard() {
+            resetViews();
+            document.getElementById('current-subject-title').innerText = "Live Squad Leaderboard";
+            leaderboardContainer.style.display = 'flex';
+            document.getElementById('nav-leaderboard').classList.add('active');
+        }
 
-        // Overlays & Progress Core
+        db.ref('squad').on('value', (snapshot) => {
+            const data = snapshot.val();
+            if(!data) return;
+            const squadArray = Object.keys(data).map(key => ({ name: key, ...data[key] })).sort((a, b) => b.progress - a.progress || b.points - a.points);
+            leaderboardContainer.innerHTML = '';
+            squadArray.forEach((user, index) => {
+                const rank = index + 1;
+                const card = document.createElement('div');
+                card.className = `leaderboard-card rank-${rank}`;
+                card.innerHTML = `
+                    <div class="rank-badge">#${rank}</div>
+                    <div class="squad-info">
+                        <div class="squad-name">${user.name} ${user.name === myUsername ? "(You)" : ""}</div>
+                        <div class="squad-stats">
+                            <span style="color: var(--primary);">📈 ${user.progress}% Mastered</span>
+                            <span style="color: var(--warning);">🔥 ${user.points} Pts</span>
+                        </div>
+                    </div>
+                `;
+                leaderboardContainer.appendChild(card);
+            });
+        });
+
+        function openAnalytics() {
+            resetViews();
+            document.getElementById('current-subject-title').innerText = "Performance Dashboard";
+            analyticsContainer.style.display = 'flex';
+            document.getElementById('nav-analytics').classList.add('active');
+
+            let subjectStats = {};
+            let totalOverallWeight = 0, completedOverallWeight = 0;
+            for (const subject in syllabus) {
+                let subjectTotal = 0, subjectCompleted = 0;
+                for (const subSubject in syllabus[subject]) {
+                    syllabus[subject][subSubject].forEach(chapter => {
+                        const weight = chapter.weight;
+                        subjectTotal += weight;
+                        totalOverallWeight += weight;
+                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/()!-:,\']/g, '')}`;
+                        if (savedProgress[chapterId] && savedProgress[chapterId].completed) {
+                            subjectCompleted += weight;
+                            completedOverallWeight += weight;
+                        }
+                    });
+                }
+                subjectStats[subject] = Math.round((subjectCompleted / subjectTotal) * 100);
+            }
+            renderChart(subjectStats);
+            
+            const aiText = document.getElementById('ai-insight-text');
+            const overallPercent = Math.round((completedOverallWeight / totalOverallWeight) * 100);
+            if(overallPercent === 0) { aiText.innerHTML = "Zero progress. <span>Start working. Now.</span>"; return; }
+            let highestSubj = "", highestVal = -1, lowestSubj = "", lowestVal = 101;
+            for(let sub in stats=subjectStats) {
+                if(stats[sub] > highestVal) { highestVal = stats[sub]; highestSubj = sub; }
+                if(stats[sub] < lowestVal) { lowestVal = stats[sub]; lowestSubj = sub; }
+            }
+            if(overallPercent === 100) aiText.innerHTML = "Syllabus 100% complete. <span>Boss mode unlocked.</span>";
+            else if (highestVal - lowestVal < 15) aiText.innerHTML = `Consistent pace across the board. You are sitting at <span>${overallPercent}%</span>. Keep grinding.`;
+            else aiText.innerHTML = `You are crushing <span>${highestSubj} (${highestVal}%)</span>, but completely neglecting <span>${lowestSubj} (${lowestVal}%)</span>. Stop hiding from your weak points.`;
+        }
+
+        function renderChart(stats) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            if(myChart) myChart.destroy();
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: { labels: Object.keys(stats), datasets: [{ data: Object.values(stats), backgroundColor: ['rgba(79, 70, 229, 0.8)', 'rgba(16, 185, 129, 0.8)', 'rgba(245, 158, 11, 0.8)', 'rgba(239, 68, 68, 0.8)', 'rgba(168, 85, 247, 0.8)', 'rgba(56, 189, 248, 0.8)'], borderRadius: 8 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { max: 100, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8' } }, x: { grid: { display: false }, ticks: { color: '#94a3b8' } } } }
+            });
+        }
+
+        let focusTimerInterval = null;
+        let isFocusing = false;
+        let wageredPoints = 0;
+        let timeRemaining = 0;
+
+        function openFocusMode() {
+            resetViews();
+            document.getElementById('current-subject-title').innerText = "Deep Work Zone";
+            focusContainer.style.display = 'flex';
+            document.getElementById('nav-focus').classList.add('active');
+        }
+
+        function startFocusSession() {
+            const mins = parseInt(document.getElementById('focus-mins').value);
+            const wager = parseInt(document.getElementById('focus-wager').value);
+            if(isNaN(wager) || wager <= 0) return showToast("⚠️ You must risk at least 1 point.");
+            if(wager > focusPoints) return showToast(`⚠️ You only have ${focusPoints} points.`);
+            if(isNaN(mins) || mins <= 0 || mins > 120) return showToast("⚠️ Set a valid time (1-120 mins).");
+
+            wageredPoints = wager;
+            timeRemaining = mins * 60;
+            isFocusing = true;
+            focusPoints -= wageredPoints;
+            updateScoreDisplay();
+
+            document.getElementById('focus-setup').style.display = 'none';
+            document.getElementById('start-focus-btn').style.display = 'none';
+            document.getElementById('timer-text').style.display = 'block';
+            
+            updateTimerDisplay();
+            focusTimerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                if(timeRemaining <= 0) succeedFocus();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+            const s = (timeRemaining % 60).toString().padStart(2, '0');
+            document.getElementById('timer-text').innerText = `${m}:${s}`;
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden && isFocusing) failFocus();
+        });
+
+        function failFocus() {
+            clearInterval(focusTimerInterval);
+            isFocusing = false;
+            document.getElementById('penalty-title').innerText = "🚨 BUSTED 🚨";
+            document.getElementById('penalty-desc').innerText = "Big Brother saw you switch tabs.\nEntry Fee lost.";
+            document.getElementById('penalty-overlay').style.display = 'flex';
+            resetFocusUI();
+        }
+
+        function succeedFocus() {
+            clearInterval(focusTimerInterval);
+            isFocusing = false;
+            focusPoints += (wageredPoints * 2);
+            updateScoreDisplay();
+            document.getElementById('success-title').innerText = "🎯 FOCUSED 🎯";
+            document.getElementById('success-desc').innerText = "You survived the session. Points doubled!";
+            document.getElementById('success-overlay').style.display = 'flex';
+            resetFocusUI();
+        }
+
+        function resetFocusUI() {
+            document.getElementById('focus-setup').style.display = 'flex';
+            document.getElementById('start-focus-btn').style.display = 'block';
+            document.getElementById('timer-text').style.display = 'none';
+            document.getElementById('focus-wager').max = focusPoints;
+        }
+
         function updateOverallProgress() {
             let totalOverallWeight = 0, completedOverallWeight = 0, totalSubjectWeight = 0, completedSubjectWeight = 0;
             for (const subject in syllabus) {
@@ -582,11 +812,16 @@
                 document.getElementById('subject-progress-bar').style.width = `${subjectPercent}%`;
                 document.getElementById('subject-progress-text').innerText = `${currentSubject}: ${subjectPercent}% Completed`;
             }
+            
             const oldPercent = globalOverallPercent;
             globalOverallPercent = totalOverallWeight === 0 ? 0 : Math.round((completedOverallWeight / totalOverallWeight) * 100);
+            
             document.getElementById('overall-progress-bar').style.width = `${globalOverallPercent}%`;
             document.getElementById('overall-progress-text').innerText = `Master Progress: ${globalOverallPercent}%`;
-            if (oldPercent !== globalOverallPercent) syncToCloud(focusPoints, globalOverallPercent);
+
+            if (oldPercent !== globalOverallPercent) {
+                syncToCloud(focusPoints, globalOverallPercent);
+            }
         }
 
         function showToast(message) {
@@ -599,13 +834,76 @@
         function closePenalty() { document.getElementById('penalty-overlay').style.display = 'none'; }
         function closeSuccess() { document.getElementById('success-overlay').style.display = 'none'; }
 
+        function downloadPDFReport() {
+            const btn = document.getElementById('dl-btn');
+            btn.innerText = "⏳ Generating PDF...";
+            btn.style.backgroundColor = "#f59e0b"; 
+
+            document.getElementById('pdf-name-header').innerText = `🎓 ${myUsername.toUpperCase()}'S REPORT`;
+            document.getElementById('pdf-score').innerText = `🔥 ${focusPoints}`;
+            document.getElementById('pdf-overall').innerText = `📈 ${globalOverallPercent}%`;
+            
+            const today = new Date();
+            document.getElementById('pdf-date').innerText = `📅 ${today.toLocaleDateString()}`;
+
+            const pdfContent = document.getElementById('pdf-content');
+            pdfContent.innerHTML = ''; 
+
+            for (const subject in syllabus) {
+                let subjectHtml = `<div class="pdf-subject-section">`;
+                let sTotal = 0, sDone = 0;
+                for (const sub in syllabus[subject]) {
+                    syllabus[subject][sub].forEach(ch => {
+                        sTotal += ch.weight;
+                        const chId = `${subject}-${sub}-${ch.name.replace(/[\s&/()!-:,\']/g, '')}`;
+                        if (savedProgress[chId] && savedProgress[chId].completed) sDone += ch.weight;
+                    });
+                }
+                const sPercent = sTotal === 0 ? 0 : Math.round((sDone/sTotal)*100);
+                
+                subjectHtml += `<div class="pdf-subject-title">
+                                    <span>📘 ${subject}</span>
+                                    <span>${sPercent}% Done</span>
+                                </div>`;
+
+                for (const subSubject in syllabus[subject]) {
+                    subjectHtml += `<ul class="pdf-chapter-list">`;
+                    syllabus[subject][subSubject].forEach(chapter => {
+                        const chapterId = `${subject}-${subSubject}-${chapter.name.replace(/[\s&/()!-:,\']/g, '')}`;
+                        const isDone = savedProgress[chapterId] && savedProgress[chapterId].completed;
+                        if(isDone) {
+                            subjectHtml += `<li class="pdf-chapter-item done"><span>✅ ${chapter.name}</span><span>(Completed)</span></li>`;
+                        } else {
+                            subjectHtml += `<li class="pdf-chapter-item"><span>⏳ ${chapter.name}</span><span>Pending</span></li>`;
+                        }
+                    });
+                    subjectHtml += `</ul>`;
+                }
+                subjectHtml += `</div>`;
+                pdfContent.innerHTML += subjectHtml;
+            }
+
+            const element = document.getElementById('pdf-template');
+            element.style.display = 'block';
+
+            const opt = {
+                margin:       [15, 10, 15, 10], 
+                filename:     `Class10_Report_${today.toLocaleDateString().replace(/\//g, '-')}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, windowWidth: 800 }, 
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['css', 'legacy'], avoid: '.pdf-subject-section' } 
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none';
+                btn.innerText = "📄 Download PDF Report";
+                btn.style.backgroundColor = "#334155";
+                showToast("✅ Report Downloaded Successfully!");
+            });
+        }
+
         initApp();
-        
-        // Stubs for other views to prevent console errors
-        function openAnalytics() { showToast("📊 AI Analytics view triggered!"); }
-        function openLeaderboard() { showToast("🏆 Leaderboard view triggered!"); }
-        function openFocusMode() { showToast("🧠 Focus Mode triggered!"); }
-        function downloadPDFReport() { showToast("📄 Downloading PDF Report..."); }
     </script>
 </body>
 </html>
