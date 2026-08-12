@@ -391,45 +391,8 @@
             }
         };
 
-        // ==========================================
-        // THE QUEST ENGINE (Data & Notes)
-        // ==========================================
-        const questDatabase = {
-            "Science-Physics-Light(Reflection&Refraction)": [
-                { q: "What is the speed of light in a vacuum?", opts: ["3 x 10^8 m/s", "3 x 10^5 km/s", "Both A and B", "None of these"], ans: 2 },
-                { q: "The mirror used by dentists to examine teeth is:", opts: ["Convex", "Concave", "Plane", "Cylindrical"], ans: 1 },
-                { q: "If the magnification produced by a lens is -1, the image is:", opts: ["Real and inverted", "Virtual and erect", "Real and magnified", "Virtual and diminished"], ans: 0 },
-                { q: "According to Snell's law, the ratio of sin(i) to sin(r) is a constant called:", opts: ["Refractive index", "Optical density", "Focal length", "Magnification"], ans: 0 },
-                { q: "A convex lens is also known as a:", opts: ["Diverging lens", "Converging lens", "Plane lens", "Bifocal lens"], ans: 1 },
-                { q: "The power of a lens is defined as the reciprocal of its:", opts: ["Radius of curvature", "Focal length in meters", "Magnification", "Object distance"], ans: 1 },
-                { q: "Where should an object be placed in front of a convex lens to get a real image of the size of the object?", opts: ["At the principal focus", "At twice the focal length (2F)", "At infinity", "Between optical center and focus"], ans: 1 },
-                { q: "The absolute refractive index of any medium is always:", opts: ["Less than 1", "Equal to 1", "Greater than 1", "Zero"], ans: 2 }
-            ]
-        };
-
-        const secretNotesVault = {
-            "Science-Physics-Light(Reflection&Refraction)": `
-                <div class="n-title">LIGHT: Reflection & Refraction</div>
-                <div class="n-section">
-                    <div class="n-h3">1. Laws of Reflection</div>
-                    <p>• The angle of incidence is equal to the angle of reflection <span class="n-hl">∠i = ∠r</span>.</p>
-                    <p>• The incident ray, normal, and reflected ray all lie in the same plane.</p>
-                </div>
-                <div class="n-section">
-                    <div class="n-h3">2. Spherical Mirrors</div>
-                    <p>• <span class="n-hl">Concave Mirror:</span> Converging mirror. Used in torches, dentist mirrors, solar furnaces.</p>
-                    <p>• <span class="n-hl">Convex Mirror:</span> Diverging mirror. Always forms virtual, erect, and diminished images. Used as rear-view mirrors in cars.</p>
-                    <div class="n-formula">Mirror Formula: 1/v + 1/u = 1/f</div>
-                </div>
-                <div class="n-section">
-                    <div class="n-h3">3. Refraction & Lenses</div>
-                    <p>• Bending of light when passing from one medium to another due to a change in speed.</p>
-                    <p>• <span class="n-hl">Snell's Law:</span> sin(i) / sin(r) = constant (Refractive Index).</p>
-                    <div class="n-formula">Lens Formula: 1/v - 1/u = 1/f</div>
-                    <div class="n-formula">Power of Lens (P) = 1 / f (in meters). Unit: Dioptre (D)</div>
-                </div>
-            `
-        };
+        
+        
 
         let savedProgress = JSON.parse(localStorage.getItem('proTrackerDataV2')) || {}; 
         let focusPoints = parseInt(localStorage.getItem('proTrackerPoints')) || 100;
