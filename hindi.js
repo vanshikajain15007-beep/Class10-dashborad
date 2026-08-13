@@ -59,7 +59,7 @@ Object.assign(questDatabase, {
         { q: "What does 'Vyadhi' mean in the poem?", opts: ["Medicine", "Disease", "Gift", "Curse"], ans: 1, exp: "They refer to the message of Yoga as a 'Vyadhi' (disease) that they don't want." },
         { q: "What is the ultimate message the Gopis give Uddhav?", opts: ["They hate Krishna", "They will follow Yoga", "Their love for Krishna (Sagun Bhakti) is unbreakable", "They want to leave Mathura"], ans: 2, exp: "They firmly establish that the path of Love (Prem/Bhakti) is vastly superior to the path of Knowledge (Yoga)." }
     ],
-    "Hindi-Kshitij (Poetry)-Ram-Lakshman-ParshuramSamvad": [
+    "Hindi-Kshitij (Poetry)-RamLakshmanParshuramSamvad": [
         { q: "Who broke the bow of Lord Shiva?", opts: ["Lakshman", "Parshuram", "Ram", "Janak"], ans: 2, exp: "Lord Ram broke the bow during Sita's Swayamvar." },
         { q: "Why was Parshuram furious?", opts: ["He hated Ram", "Shiva was his Guru, and his sacred bow was broken", "He wanted to marry Sita", "He lost a war"], ans: 1, exp: "Parshuram was a devout disciple of Lord Shiva and considered breaking the bow an extreme insult." },
         { q: "How did Lakshman react to Parshuram's anger?", opts: ["He apologized", "He ran away", "He mocked and insulted Parshuram", "He cried"], ans: 2, exp: "Lakshman playfully taunted him, saying they had broken many small bows in childhood without anyone getting angry." },
@@ -105,7 +105,7 @@ Object.assign(questDatabase, {
         { q: "What game did the children NOT play?", opts: ["Farming/Agriculture", "Marriage processions", "Cricket", "Running a sweet shop"], ans: 2, exp: "The children played rural role-playing games mimicking adult life, like farming and weddings." },
         { q: "What did the mother do to make Bhola Nath eat more?", opts: ["Beat him", "Told him stories of birds (Tota, Maina) so he would eat before they flew away", "Promised toys", "Let him watch TV"], ans: 1, exp: "She would make morsels shaped like birds and urge him to eat them quickly, showing a mother's unique affection." }
     ],
-    "Hindi-Kritika-Sana-SanaHathJodi": [
+    "Hindi-Kritika-SanaSanaHathJodi": [
         { q: "Which state's beauty is described in this travelogue?", opts: ["Kashmir", "Sikkim", "Kerala", "Uttarakhand"], ans: 1, exp: "Madhu Kankariya describes her mesmerizing journey through Gangtok and the Himalayas in Sikkim." },
         { q: "What shocked the author amidst the extreme beauty of the mountains?", opts: ["Pollution", "Traffic", "Poor women doing heavy manual labor breaking rocks", "Wild animals"], ans: 2, exp: "She was deeply moved seeing local women risking their lives breaking stones to build roads in such harsh conditions." },
         { q: "What do the white prayer flags (Pataakayen) in Sikkim signify?", opts: ["A festival", "Peace and peace for a departed soul", "A wedding", "War"], ans: 1, exp: "When a Buddhist monk dies, 108 white flags are hoisted. Colored flags are hoisted for auspicious occasions." },
@@ -162,7 +162,7 @@ Object.assign(questDatabase, {
         { q: "In an Aupcharik Patra (Formal Letter), what comes immediately after the Receiver's Address?", opts: ["Salutation", "Date", "Subject (Vishay)", "Body"], ans: 2, exp: "The Vishay (Subject) is crucial in formal letters to instantly state the purpose of the letter." },
         { q: "Which sign-off is appropriate for a letter to an Editor (Sampaadak)?", opts: ["Tumhara mitra", "Bhavdiya (भवदीय)", "Priya", "Shubhechhu"], ans: 1, exp: "'Bhavdiya' is the standard, highly respectful closing for official Hindi letters." }
     ],
-    "Hindi-Lekhan & Reading-Swa-vrittE-mail": [
+    "Hindi-Lekhan & Reading-SwavrittEmail": [
         { q: "A Swa-vritt (Bio-data/Resume) must essentially include:", opts: ["A story", "Personal details, educational qualifications, and experience", "Jokes", "Family history only"], ans: 1, exp: "A Swa-vritt is a professional document designed to get you a job, so format and factual accuracy are key." },
         { q: "In an E-mail format, what does 'BCC' stand for?", opts: ["Blind Carbon Copy", "Basic Computer Code", "Broad Carbon Copy", "Before Carbon Copy"], ans: 0, exp: "BCC is used to send an email to multiple people without them seeing each other's email addresses." }
     ],
