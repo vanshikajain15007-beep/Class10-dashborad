@@ -14,7 +14,23 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
 
     <!-- THE DATA VAULT -->
-    <script src="data.js"></script>
+        <!-- FIREBASE CLOUD SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
+
+    <!-- THE DATA VAULTS -->
+    <script>
+        // Initialize the empty vaults first so the files have somewhere to put their data
+        const questDatabase = {};
+        const secretNotesVault = {};
+    </script>
+    <!-- Plug in the subject cartridges -->
+    <script src="math.js"></script>
+    <script src="science.js"></script>
+    <script src="sst.js"></script>
+    <script src="languages.js"></script>
+    <script src="it.js"></script>
+
 
     <style>
         :root {
