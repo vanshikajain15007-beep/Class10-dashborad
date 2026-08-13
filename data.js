@@ -4,7 +4,7 @@
 
 const questDatabase = {
     // ------------------------------------------
-    // SCIENCE (Existing)
+    // SCIENCE
     // ------------------------------------------
     "Science-Physics-LightReflectionRefraction": [
         { q: "What is the speed of light in a vacuum?", opts: ["3 x 10^8 m/s", "3 x 10^5 km/s", "Both A and B", "None of these"], ans: 2, exp: "3 x 10^8 m/s is exactly 300,000,000 m/s. When converted to kilometers, it becomes 300,000 km/s (or 3 x 10^5 km/s). Both units represent the exact same speed!" },
@@ -18,9 +18,9 @@ const questDatabase = {
     ],
 
     // ------------------------------------------
-    // MATHEMATICS - ALGEBRA & NUMBERS
+    // MATHEMATICS - ALGEBRA & NUMBERS (FIXED SPACES)
     // ------------------------------------------
-    "Mathematics-Algebra&Numbers-RealNumbers": [
+    "Mathematics-Algebra & Numbers-RealNumbers": [
         { q: "For any two positive integers a and b, HCF(a,b) × LCM(a,b) is equal to:", opts: ["a + b", "a - b", "a × b", "a / b"], ans: 2, exp: "The product of the HCF and LCM of two numbers is always equal to the product of the numbers themselves (a × b)." },
         { q: "If p is a prime number and p divides a², then p also divides:", opts: ["a", "2a", "a/2", "a³"], ans: 0, exp: "According to the Fundamental Theorem of Arithmetic, if a prime number divides the square of a number, it must also divide the base number (a)." },
         { q: "The decimal expansion of the rational number 14587/1250 will terminate after:", opts: ["1 decimal place", "2 decimal places", "3 decimal places", "4 decimal places"], ans: 3, exp: "1250 = 2¹ × 5⁴. The highest power of 2 or 5 in the denominator is 4, so it terminates after 4 decimal places." },
@@ -31,7 +31,7 @@ const questDatabase = {
         { q: "√2 is an irrational number. This statement can be proven using:", opts: ["Direct proof", "Proof by contradiction", "Mathematical induction", "Euclid's Division Lemma"], ans: 1, exp: "We prove √2 is irrational by initially assuming it IS rational (p/q), and then finding a contradiction." }
     ],
     
-    "Mathematics-Algebra&Numbers-Polynomials": [
+    "Mathematics-Algebra & Numbers-Polynomials": [
         { q: "A polynomial of degree 2 is called a:", opts: ["Linear polynomial", "Quadratic polynomial", "Cubic polynomial", "Biquadratic polynomial"], ans: 1, exp: "A polynomial with the highest power of 2 is called a quadratic polynomial." },
         { q: "If α and β are the zeroes of the quadratic polynomial ax² + bx + c, then α + β equals:", opts: ["c/a", "-c/a", "b/a", "-b/a"], ans: 3, exp: "The sum of the zeroes of a quadratic polynomial is always equal to -b/a." },
         { q: "A polynomial can have at most how many zeroes?", opts: ["Infinite", "Degree of the polynomial", "Two", "One"], ans: 1, exp: "The Fundamental Theorem of Algebra states that a polynomial of degree 'n' can have at most 'n' real zeroes." },
@@ -42,7 +42,7 @@ const questDatabase = {
         { q: "If the sum of zeroes of quadratic polynomial 3x² - kx + 6 is 3, find k.", opts: ["3", "6", "9", "-9"], ans: 2, exp: "Sum of zeroes = -(-k)/3 = k/3. Since sum is given as 3, k/3 = 3, so k = 9." }
     ],
 
-    "Mathematics-Algebra&Numbers-PairofLinearEquations": [
+    "Mathematics-Algebra & Numbers-PairofLinearEquations": [
         { q: "If a₁/a₂ ≠ b₁/b₂, the pair of linear equations has:", opts: ["No solution", "Infinitely many solutions", "A unique solution", "Two solutions"], ans: 2, exp: "This is the condition for intersecting lines, which means they cross at exactly one point (unique solution)." },
         { q: "Lines represented by 2x + 3y = 9 and 4x + 6y = 18 are:", opts: ["Intersecting", "Parallel", "Coincident", "Perpendicular"], ans: 2, exp: "a₁/a₂ = 2/4 (1/2), b₁/b₂ = 3/6 (1/2), c₁/c₂ = -9/-18 (1/2). Since all ratios are equal, the lines overlap entirely (coincident)." },
         { q: "A system of equations that has no solution is called:", opts: ["Consistent", "Inconsistent", "Dependent", "Independent"], ans: 1, exp: "Parallel lines never meet, so they have no solution, making the system mathematically 'inconsistent'." },
@@ -53,7 +53,7 @@ const questDatabase = {
         { q: "In substitution method, we:", opts: ["Add equations to eliminate a variable", "Multiply equations to make coefficients equal", "Express one variable in terms of the other", "Draw graphs to find the intersection"], ans: 2, exp: "Substitution involves taking an equation, isolating one variable (like x = 2y + 3), and plugging it into the other equation." }
     ],
 
-    "Mathematics-Algebra&Numbers-QuadraticEquations": [
+    "Mathematics-Algebra & Numbers-QuadraticEquations": [
         { q: "The standard form of a quadratic equation is:", opts: ["ax + b = 0", "ax² + bx + c = 0", "ax³ + bx² + cx = 0", "ax² + bx = c"], ans: 1, exp: "A quadratic equation must have a squared term as its highest power, formatted as ax² + bx + c = 0 where a ≠ 0." },
         { q: "The discriminant of the quadratic equation ax² + bx + c = 0 is:", opts: ["b² - 4ac", "b² + 4ac", "4ac - b²", "√b² - 4ac"], ans: 0, exp: "The discriminant (D) determines the nature of the roots and is calculated as b² - 4ac." },
         { q: "If the discriminant is equal to zero, the roots are:", opts: ["Real and distinct", "No real roots", "Real and equal", "Rational and unequal"], ans: 2, exp: "If b² - 4ac = 0, the quadratic formula yields a single, repeated real root (Real and equal)." },
@@ -64,7 +64,7 @@ const questDatabase = {
         { q: "A train travels 360 km at a uniform speed. If speed was 5 km/h more, it would take 1 hour less. What is the equation?", opts: ["360/x - 360/(x+5) = 1", "360/(x+5) - 360/x = 1", "360x = x + 5", "x(x+5) = 360"], ans: 0, exp: "Time = Distance/Speed. The original time (360/x) minus the faster time (360/(x+5)) equals the difference of 1 hour." }
     ],
 
-    "Mathematics-Algebra&Numbers-ArithmeticProgressions": [
+    "Mathematics-Algebra & Numbers-ArithmeticProgressions": [
         { q: "The nth term of an AP is given by the formula:", opts: ["a + (n+1)d", "a + (n-1)d", "a + nd", "a - (n-1)d"], ans: 1, exp: "To find any term in an AP, you take the first term (a) and add the common difference (d) multiplied by (n-1)." },
         { q: "If the common difference of an AP is 5, then a₁₈ - a₁₃ is:", opts: ["5", "20", "25", "30"], ans: 2, exp: "a₁₈ - a₁₃ = [a + 17d] - [a + 12d] = 5d. Since d=5, 5(5) = 25." },
         { q: "The sum of the first n terms of an AP is:", opts: ["n/2 [2a + (n-1)d]", "n/2 [a + l]", "Both A and B", "None of these"], ans: 2, exp: "Both formulas are correct! The first uses 'd', and the second is a shortcut if you already know the last term 'l'." },
@@ -134,9 +134,9 @@ const questDatabase = {
     ],
 
     // ------------------------------------------
-    // MATHEMATICS - TRIGONOMETRY & STATS
+    // MATHEMATICS - TRIGONOMETRY & STATS (FIXED SPACES)
     // ------------------------------------------
-    "Mathematics-Trigonometry&Stats-IntrotoTrigonometry": [
+    "Mathematics-Trigonometry & Stats-IntrotoTrigonometry": [
         { q: "In a right triangle, sine of angle θ is:", opts: ["Base/Hypotenuse", "Perpendicular/Base", "Perpendicular/Hypotenuse", "Hypotenuse/Perpendicular"], ans: 2, exp: "Sine is the ratio of the side Opposite (Perpendicular) to the angle over the Hypotenuse." },
         { q: "The value of sin²θ + cos²θ is always:", opts: ["0", "1", "-1", "Depends on θ"], ans: 1, exp: "This is the primary Pythagorean trigonometric identity, which holds true for absolutely any angle θ." },
         { q: "If tan A = 4/3, what is the value of sin A?", opts: ["3/5", "4/5", "3/4", "5/4"], ans: 1, exp: "tan = P/B = 4/3. Hypotenuse = √(4²+3²) = 5. sin = P/H = 4/5." },
@@ -147,7 +147,7 @@ const questDatabase = {
         { q: "If sin θ = cos θ, then the value of θ (for acute angles) is:", opts: ["30°", "45°", "60°", "90°"], ans: 1, exp: "At 45°, both sine and cosine equal 1/√2 because the perpendicular and base are equal." }
     ],
 
-    "Mathematics-Trigonometry&Stats-HeightsandDistances": [
+    "Mathematics-Trigonometry & Stats-HeightsandDistances": [
         { q: "The angle formed by the line of sight with the horizontal when viewing an object above the horizontal level is called:", opts: ["Angle of depression", "Angle of elevation", "Right angle", "Acute angle"], ans: 1, exp: "When you look UP at something, the angle your eyes make with the flat horizon is the angle of elevation." },
         { q: "The angle formed when viewing an object below the horizontal level is:", opts: ["Angle of depression", "Angle of elevation", "Obtuse angle", "Reflex angle"], ans: 0, exp: "When you look DOWN from a height, the angle from the imaginary horizontal line dropping down to the object is the angle of depression." },
         { q: "If the height of a pole is equal to the length of its shadow, the sun's altitude is:", opts: ["30°", "45°", "60°", "90°"], ans: 1, exp: "Let height be h and shadow be x. Since h = x, tan θ = h/x = 1. Therefore, θ = 45°." },
@@ -158,7 +158,7 @@ const questDatabase = {
         { q: "The angle of elevation of the top of a building from the foot of a tower is 30° and the angle of elevation of the top of the tower from the foot of the building is 60°. If the tower is 50m high, the building's height is:", opts: ["50/3 m", "50 m", "150 m", "25 m"], ans: 0, exp: "Distance x = 50/tan(60) = 50/√3. Building height h = x * tan(30) = (50/√3) * (1/√3) = 50/3 m." }
     ],
 
-    "Mathematics-Trigonometry&Stats-Statistics": [
+    "Mathematics-Trigonometry & Stats-Statistics": [
         { q: "Which of the following is NOT a measure of central tendency?", opts: ["Mean", "Median", "Mode", "Range"], ans: 3, exp: "Mean, median, and mode show the 'center' of data. Range shows the 'spread' (difference between highest and lowest)." },
         { q: "The formula to find the class mark is:", opts: ["Upper limit - Lower limit", "(Upper limit + Lower limit)/2", "Upper limit / Lower limit", "Upper limit × Lower limit"], ans: 1, exp: "The class mark is the exact midpoint of a class interval." },
         { q: "The empirical relationship between mean, median, and mode is:", opts: ["3 Median = Mode + 2 Mean", "Mode = 3 Median - 2 Mean", "Both A and B", "Mean = 3 Median - Mode"], ans: 2, exp: "This is Karl Pearson's empirical formula. Both A and B are mathematically identical algebraic variations of it." },
@@ -169,7 +169,7 @@ const questDatabase = {
         { q: "If Mode = 80 and Mean = 110, then Median is:", opts: ["90", "100", "105", "110"], ans: 1, exp: "Mode = 3(Median) - 2(Mean). 80 = 3(Median) - 2(110). 80 = 3(Median) - 220. 300 = 3(Median). Median = 100." }
     ],
 
-    "Mathematics-Trigonometry&Stats-Probability": [
+    "Mathematics-Trigonometry & Stats-Probability": [
         { q: "The probability of an impossible event is:", opts: ["1", "0", "-1", "Infinity"], ans: 1, exp: "If an event absolutely cannot happen (like rolling a 7 on a standard 6-sided die), its probability is mathematically zero." },
         { q: "The probability of a sure (certain) event is:", opts: ["0", "1", "0.5", "100"], ans: 1, exp: "If an event is guaranteed to happen, its probability is 1 (or 100%)." },
         { q: "Which of the following cannot be the probability of an event?", opts: ["2/3", "-1.5", "15%", "0.7"], ans: 1, exp: "Probability is always a value between 0 and 1. It can NEVER be a negative number." },
@@ -182,10 +182,12 @@ const questDatabase = {
 };
 
 // ==========================================
-// SECRET NOTES VAULT
-// Paste your colorful HTML notes inside the backticks (` `) below!
+// SECRET NOTES VAULT (Fully Populated!)
 // ==========================================
 const secretNotesVault = {
+    // ------------------------------------------
+    // SCIENCE (Existing)
+    // ------------------------------------------
     "Science-Physics-LightReflectionRefraction": `
         <div class="n-title">LIGHT: Reflection & Refraction</div>
         <div class="n-section">
@@ -195,32 +197,219 @@ const secretNotesVault = {
         </div>
         <div class="n-section">
             <div class="n-h3">2. Spherical Mirrors</div>
-            <p>• <span class="n-hl">Concave Mirror:</span> Converging mirror. Used in torches, dentist mirrors, solar furnaces.</p>
-            <p>• <span class="n-hl">Convex Mirror:</span> Diverging mirror. Always forms virtual, erect, and diminished images. Used as rear-view mirrors in cars.</p>
+            <p>• <span class="n-hl">Concave Mirror:</span> Converging mirror. Used in torches, dentist mirrors.</p>
+            <p>• <span class="n-hl">Convex Mirror:</span> Diverging mirror. Always forms virtual, erect, and diminished images.</p>
             <div class="n-formula">Mirror Formula: 1/v + 1/u = 1/f</div>
         </div>
         <div class="n-section">
             <div class="n-h3">3. Refraction & Lenses</div>
-            <p>• Bending of light when passing from one medium to another due to a change in speed.</p>
             <p>• <span class="n-hl">Snell's Law:</span> sin(i) / sin(r) = constant (Refractive Index).</p>
             <div class="n-formula">Lens Formula: 1/v - 1/u = 1/f</div>
             <div class="n-formula">Power of Lens (P) = 1 / f (in meters). Unit: Dioptre (D)</div>
         </div>
     `,
 
-    // MATH NOTES TEMPLATES (Empty and ready for you to fill!)
-    "Mathematics-Algebra&Numbers-RealNumbers": ``,
-    "Mathematics-Algebra&Numbers-Polynomials": ``,
-    "Mathematics-Algebra&Numbers-PairofLinearEquations": ``,
-    "Mathematics-Algebra&Numbers-QuadraticEquations": ``,
-    "Mathematics-Algebra&Numbers-ArithmeticProgressions": ``,
-    "Mathematics-Geometry-CoordinateGeometry": ``,
-    "Mathematics-Geometry-Triangles": ``,
-    "Mathematics-Geometry-Circles": ``,
-    "Mathematics-Geometry-AreasRelatedtoCircles": ``,
-    "Mathematics-Geometry-SurfaceAreasandVolumes": ``,
-    "Mathematics-Trigonometry&Stats-IntrotoTrigonometry": ``,
-    "Mathematics-Trigonometry&Stats-HeightsandDistances": ``,
-    "Mathematics-Trigonometry&Stats-Statistics": ``,
-    "Mathematics-Trigonometry&Stats-Probability": ``
+    // ------------------------------------------
+    // MATHEMATICS
+    // ------------------------------------------
+    "Mathematics-Algebra & Numbers-RealNumbers": `
+        <div class="n-title">REAL NUMBERS</div>
+        <div class="n-section">
+            <div class="n-h3">1. Fundamental Theorem of Arithmetic</div>
+            <p>• Every composite number can be expressed as a unique product of primes.</p>
+            <div class="n-formula">HCF(a,b) × LCM(a,b) = a × b</div>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Irrationality</div>
+            <p>• Let p be a prime number. If p divides <span class="n-hl">a²</span>, then p divides <span class="n-hl">a</span>.</p>
+            <p>• Numbers like √2, √3, and √5 are proven irrational using the method of contradiction.</p>
+        </div>
+    `,
+
+    "Mathematics-Algebra & Numbers-Polynomials": `
+        <div class="n-title">POLYNOMIALS</div>
+        <div class="n-section">
+            <div class="n-h3">1. Geometrical Meaning of Zeroes</div>
+            <p>• The zeroes of a polynomial are the x-coordinates of the points where its graph intersects the <span class="n-hl">x-axis</span>.</p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Quadratic Polynomials (ax² + bx + c)</div>
+            <p>• Let α and β be the zeroes of the polynomial.</p>
+            <div class="n-formula">Sum of Zeroes (α + β) = -b / a</div>
+            <div class="n-formula">Product of Zeroes (α × β) = c / a</div>
+        </div>
+    `,
+
+    "Mathematics-Algebra & Numbers-PairofLinearEquations": `
+        <div class="n-title">PAIR OF LINEAR EQUATIONS</div>
+        <div class="n-section">
+            <div class="n-h3">Conditions for Lines: (a₁x + b₁y + c₁ = 0) & (a₂x + b₂y + c₂ = 0)</div>
+            <p>• <span class="n-hl">Intersecting Lines:</span> a₁/a₂ ≠ b₁/b₂ (Exactly one unique solution, Consistent).</p>
+            <p>• <span class="n-hl">Parallel Lines:</span> a₁/a₂ = b₁/b₂ ≠ c₁/c₂ (No solution, Inconsistent).</p>
+            <p>• <span class="n-hl">Coincident Lines:</span> a₁/a₂ = b₁/b₂ = c₁/c₂ (Infinite solutions, Dependent/Consistent).</p>
+        </div>
+    `,
+
+    "Mathematics-Algebra & Numbers-QuadraticEquations": `
+        <div class="n-title">QUADRATIC EQUATIONS</div>
+        <div class="n-section">
+            <div class="n-h3">1. The Quadratic Formula</div>
+            <p>• For any equation ax² + bx + c = 0, the roots are found using:</p>
+            <div class="n-formula">x = [ -b ± √(b² - 4ac) ] / 2a</div>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. The Discriminant (D)</div>
+            <div class="n-formula">D = b² - 4ac</div>
+            <p>• If <span class="n-hl">D > 0</span>: Two distinct real roots.</p>
+            <p>• If <span class="n-hl">D = 0</span>: Two equal real roots.</p>
+            <p>• If <span class="n-hl">D < 0</span>: No real roots.</p>
+        </div>
+    `,
+
+    "Mathematics-Algebra & Numbers-ArithmeticProgressions": `
+        <div class="n-title">ARITHMETIC PROGRESSIONS (AP)</div>
+        <div class="n-section">
+            <div class="n-h3">1. General Term</div>
+            <p>• Where 'a' is the first term and 'd' is the common difference.</p>
+            <div class="n-formula">nth term (aₙ) = a + (n - 1)d</div>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Sum of First 'n' Terms</div>
+            <div class="n-formula">Sₙ = (n/2) × [2a + (n - 1)d]</div>
+            <p>• If the last term 'l' is known: <span class="n-hl">Sₙ = (n/2) × (a + l)</span></p>
+        </div>
+    `,
+
+    "Mathematics-Geometry-CoordinateGeometry": `
+        <div class="n-title">COORDINATE GEOMETRY</div>
+        <div class="n-section">
+            <div class="n-h3">1. Distance Formula</div>
+            <p>• Distance between points (x₁, y₁) and (x₂, y₂):</p>
+            <div class="n-formula">d = √[ (x₂ - x₁)² + (y₂ - y₁)² ]</div>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Section & Midpoint Formulas</div>
+            <p>• Point dividing a line in ratio m₁:m₂ :</p>
+            <div class="n-formula">x = (m₁x₂ + m₂x₁)/(m₁+m₂), y = (m₁y₂ + m₂y₁)/(m₁+m₂)</div>
+            <p>• Midpoint: <span class="n-hl">((x₁+x₂)/2, (y₁+y₂)/2)</span></p>
+        </div>
+    `,
+
+    "Mathematics-Geometry-Triangles": `
+        <div class="n-title">TRIANGLES</div>
+        <div class="n-section">
+            <div class="n-h3">1. Basic Proportionality Theorem (Thales)</div>
+            <p>• If a line is drawn parallel to one side of a triangle intersecting the other two sides, then it divides the two sides in the same ratio.</p>
+            <div class="n-formula">If DE || BC, then AD/DB = AE/EC</div>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Similarity Criteria</div>
+            <p>• <span class="n-hl">AAA (Angle-Angle-Angle):</span> Corresponding angles are equal.</p>
+            <p>• <span class="n-hl">SSS (Side-Side-Side):</span> Corresponding sides are proportional.</p>
+            <p>• <span class="n-hl">SAS (Side-Angle-Side):</span> One angle is equal and including sides are proportional.</p>
+        </div>
+    `,
+
+    "Mathematics-Geometry-Circles": `
+        <div class="n-title">CIRCLES</div>
+        <div class="n-section">
+            <div class="n-h3">1. Tangent Properties</div>
+            <p>• The tangent at any point of a circle is <span class="n-hl">perpendicular</span> to the radius through the point of contact.</p>
+            <p>• The lengths of tangents drawn from an external point to a circle are <span class="n-hl">equal</span>.</p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Key Facts</div>
+            <p>• A circle can have a maximum of two parallel tangents.</p>
+            <p>• The line containing the radius through the point of contact is called the 'normal' to the circle at the point.</p>
+        </div>
+    `,
+
+    "Mathematics-Geometry-AreasRelatedtoCircles": `
+        <div class="n-title">AREAS RELATED TO CIRCLES</div>
+        <div class="n-section">
+            <div class="n-h3">1. Circle Basics</div>
+            <p>• Circumference = <span class="n-hl">2πr</span>  |  Area = <span class="n-hl">πr²</span></p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Sectors and Arcs (Angle θ)</div>
+            <div class="n-formula">Length of Arc = (θ/360) × 2πr</div>
+            <div class="n-formula">Area of Sector = (θ/360) × πr²</div>
+            <p>• Area of Segment = Area of corresponding sector - Area of corresponding triangle.</p>
+        </div>
+    `,
+
+    "Mathematics-Geometry-SurfaceAreasandVolumes": `
+        <div class="n-title">SURFACE AREAS & VOLUMES</div>
+        <div class="n-section">
+            <div class="n-h3">1. Cylinder</div>
+            <p>• Curved Surface Area = <span class="n-hl">2πrh</span></p>
+            <p>• Total Surface Area = <span class="n-hl">2πr(r + h)</span></p>
+            <p>• Volume = <span class="n-hl">πr²h</span></p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Cone & Sphere</div>
+            <p>• Cone Volume = <span class="n-hl">(1/3)πr²h</span>  |  CSA = <span class="n-hl">πrl</span> (where l = √(r²+h²))</p>
+            <p>• Sphere Volume = <span class="n-hl">(4/3)πr³</span>  |  Surface Area = <span class="n-hl">4πr²</span></p>
+            <p>• Hemisphere Volume = <span class="n-hl">(2/3)πr³</span>  |  TSA = <span class="n-hl">3πr²</span></p>
+        </div>
+    `,
+
+    "Mathematics-Trigonometry & Stats-IntrotoTrigonometry": `
+        <div class="n-title">INTRODUCTION TO TRIGONOMETRY</div>
+        <div class="n-section">
+            <div class="n-h3">1. Trigonometric Ratios (Right Triangle)</div>
+            <p>• sin θ = P / H  |  cos θ = B / H  |  tan θ = P / B</p>
+            <p>• cosec θ = H / P  |  sec θ = H / B  |  cot θ = B / P</p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Fundamental Identities</div>
+            <div class="n-formula">sin²θ + cos²θ = 1</div>
+            <div class="n-formula">1 + tan²θ = sec²θ</div>
+            <div class="n-formula">1 + cot²θ = cosec²θ</div>
+        </div>
+    `,
+
+    "Mathematics-Trigonometry & Stats-HeightsandDistances": `
+        <div class="n-title">HEIGHTS AND DISTANCES</div>
+        <div class="n-section">
+            <div class="n-h3">1. Line of Sight & Angles</div>
+            <p>• <span class="n-hl">Angle of Elevation:</span> The angle formed above the horizontal line when looking up at an object.</p>
+            <p>• <span class="n-hl">Angle of Depression:</span> The angle formed below the horizontal line when looking down at an object.</p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Key Strategy</div>
+            <p>• Always draw a right-angled triangle mapping the height (P) and base distance (B). Use <span class="n-hl">tan θ = P/B</span> in 90% of numericals to find the missing side.</p>
+        </div>
+    `,
+
+    "Mathematics-Trigonometry & Stats-Statistics": `
+        <div class="n-title">STATISTICS</div>
+        <div class="n-section">
+            <div class="n-h3">1. Mean (Average)</div>
+            <p>• Direct Method: <span class="n-hl">x̄ = Σfᵢxᵢ / Σfᵢ</span></p>
+            <p>• Assumed Mean Method: <span class="n-hl">x̄ = a + (Σfᵢdᵢ / Σfᵢ)</span> where dᵢ = xᵢ - a</p>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Median, Mode & Empirical Formula</div>
+            <p>• Mode is the value with the highest frequency.</p>
+            <p>• Median is the middlemost value of sorted data.</p>
+            <div class="n-formula">3 × Median = Mode + 2 × Mean</div>
+        </div>
+    `,
+
+    "Mathematics-Trigonometry & Stats-Probability": `
+        <div class="n-title">PROBABILITY</div>
+        <div class="n-section">
+            <div class="n-h3">1. Theoretical Probability Formula</div>
+            <div class="n-formula">P(E) = (Favorable Outcomes) / (Total Possible Outcomes)</div>
+        </div>
+        <div class="n-section">
+            <div class="n-h3">2. Key Rules</div>
+            <p>• The probability of a sure event is <span class="n-hl">1</span>.</p>
+            <p>• The probability of an impossible event is <span class="n-hl">0</span>.</p>
+            <p>• Probability always lies between 0 and 1: <span class="n-hl">0 ≤ P(E) ≤ 1</span>.</p>
+            <div class="n-formula">P(E) + P(not E) = 1</div>
+        </div>
+    `
 };
+        
