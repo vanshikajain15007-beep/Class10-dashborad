@@ -244,7 +244,7 @@ Object.assign(secretNotesVault, {
             <p>• गोपियों का प्रेम हारिल पक्षी की लकड़ी और गुड़ से चिपकी चींटियों के समान अटूट (Sagun Bhakti) है।</p>
         </div>
     `,
-    "Hindi-Kshitij (Poetry)-Ram-Lakshman-ParshuramSamvad": `
+    "Hindi-Kshitij (Poetry)-RamLakshmanParshuramSamvad": `
         <div class="n-title">राम-लक्ष्मण-परशुराम संवाद</div>
         <div class="n-section">
             <p>• <span class="n-hl">प्रसंग:</span> सीता स्वयंवर में शिव धनुष टूटने पर परशुराम का क्रोध।</p>
@@ -291,7 +291,7 @@ Object.assign(secretNotesVault, {
             <p>• <span class="n-hl">संदेश:</span> दुनिया में सबसे सुरक्षित जगह माँ की गोद है। ग्रामीण बचपन के खेल (खेती, बारात) का सुंदर चित्रण।</p>
         </div>
     `,
-    "Hindi-Kritika-Sana-SanaHathJodi": `
+    "Hindi-Kritika-SanaSanaHathJodi": `
         <div class="n-title">साना-साना हाथ जोड़ि</div>
         <div class="n-section">
             <p>• सिक्किम और हिमालय की यात्रा का वर्णन।</p>
@@ -362,7 +362,7 @@ Object.assign(secretNotesVault, {
             <p>• <span class="n-hl">अंत:</span> 'भवदीय' (Bhavdiya) का प्रयोग करें।</p>
         </div>
     `,
-    "Hindi-Lekhan & Reading-Swa-vrittE-mail": `
+    "Hindi-Lekhan & Reading-SwavrittEmail": `
         <div class="n-title">स्ववृत्त (Bio-data) और ई-मेल</div>
         <div class="n-section">
             <p>• <span class="n-hl">स्ववृत्त:</span> नौकरी के लिए लिखा जाता है। इसमें व्यक्तिगत जानकारी, शैक्षणिक योग्यता और अनुभव का स्पष्ट बॉक्स/टेबल होना चाहिए।</p>
