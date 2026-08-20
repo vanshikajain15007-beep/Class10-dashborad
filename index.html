@@ -43,17 +43,22 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; height: 100dvh; overflow: hidden; }
+        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
 
         /* Sidebar UI */
         .sidebar { width: 280px; background-color: var(--bg-panel); padding: 24px; display: flex; flex-direction: column; border-right: 1px solid #334155; z-index: 10; flex-shrink: 0; overflow-y: auto; }
-        .sidebar h2 { color: var(--primary); font-size: 24px; margin-bottom: 15px; font-weight: 800; text-align: center; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .sidebar-header h2 { color: var(--primary); font-size: 24px; font-weight: 800; }
+        .menu-dots { background: transparent; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; padding: 0 5px; transition: 0.2s; }
+        .menu-dots:hover { color: white; }
         
-        .badge-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .stat-badge { padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: bold; text-align: center; border: 1px solid transparent; }
+        /* Stats Menu (Hidden by default) */
+        .badge-container { display: none; flex-direction: column; gap: 10px; margin-bottom: 20px; animation: fadeIn 0.3s ease; }
+        .stat-badge { padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: bold; text-align: center; border: 1px solid transparent; cursor: default; }
         .score-badge { background: rgba(245, 158, 11, 0.15); color: var(--warning); border-color: rgba(245, 158, 11, 0.3); }
         .streak-badge { background: rgba(236, 72, 153, 0.15); color: var(--pink); border-color: rgba(236, 72, 153, 0.3); }
-        .countdown-badge { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border-color: rgba(6, 182, 212, 0.3); }
+        .countdown-badge { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border-color: rgba(6, 182, 212, 0.3); cursor: pointer; transition: 0.2s; }
+        .countdown-badge:hover { background: rgba(6, 182, 212, 0.3); }
 
         .sidebar-progress-container { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #334155; }
         .sidebar-progress-text { font-size: 15px; font-weight: bold; color: var(--success); margin-bottom: 10px; display: block; }
@@ -100,7 +105,6 @@
         .chapter-row label { flex-grow: 1; cursor: pointer; padding-left: 18px; font-size: 17px; display: flex; justify-content: space-between; align-items: center; }
         .weight-badge { font-size: 13px; background: #334155; padding: 4px 10px; border-radius: 12px; color: var(--text-muted); font-weight: 600; }
         
-        /* STATIC BADGE - Lag Free! */
         .quest-badge { background: linear-gradient(45deg, #ec4899, #8b5cf6); color: white; padding: 3px 8px; border-radius: 8px; font-size: 11px; text-transform: uppercase; font-weight: 900; margin-left: 10px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4); }
         
         .view-notes-btn { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border: 1px solid var(--cyan); padding: 5px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; display: none; transition: 0.2s; }
@@ -231,20 +235,24 @@
         .pdf-footer { text-align: center; margin-top: 50px; font-size: 14px; color: #94a3b8; font-weight: bold; border-top: 1px solid #e2e8f0; padding-top: 20px; }
 
         /* ==========================================
-           MOBILE OPTIMIZATION 
+           MOBILE OPTIMIZATION (THE SCROLL FIX)
            ========================================== */
         @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; padding: 15px; border-right: none; border-bottom: 1px solid #334155; background: #1e293b; z-index: 100; flex-shrink: 0; }
-            .sidebar h2 { font-size: 20px; text-align: center; margin-bottom: 8px; }
+            /* Removing fixed height entirely so the browser handles scrolling natively */
+            body { display: block; overflow: auto; height: auto; }
             
-            #tabs-container { flex-direction: row; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 15px; border-bottom: 1px solid #334155; background: #1e293b; z-index: 100; flex-shrink: 0; overflow: visible; }
+            .sidebar-header h2 { font-size: 20px; }
+            
+            #tabs-container { flex-direction: row; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; margin-bottom: 10px; }
             #tabs-container::-webkit-scrollbar { display: none; }
             .tab-btn { font-size: 13px; padding: 8px 16px; margin-bottom: 0; margin-right: 5px; flex-shrink: 0; }
             
             .header-top { flex-direction: column; align-items: flex-start; gap: 10px; }
             .search-bar { width: 100%; }
-            .main-content { padding: 15px 15px 80px 15px; } 
+            
+            /* Main content becomes just a normal block element that expands downwards */
+            .main-content { overflow: visible; height: auto; padding: 15px 15px 40px 15px; } 
             .header h1 { font-size: 24px; margin-bottom: 10px; }
             .progress-container { height: 24px; }
             .progress-text { font-size: 13px; line-height: 24px; }
@@ -278,9 +286,6 @@
 <body>
 
     <div id="toast" class="toast-notification">✅ Action Successful!</div>
-    
-    <!-- Hidden input for file imports -->
-    <input type="file" id="import-file" accept=".json" onchange="importData(event)">
 
     <!-- QUEST & MULTIPLAYER: Boss Fight Overlay -->
     <div id="quiz-overlay" class="full-overlay">
@@ -340,7 +345,7 @@
     <div id="pdf-template">
         <div class="pdf-header">
             <h1 id="pdf-name-header">🎓 CLASS 10 PROGRESS REPORT</h1>
-            <p style="color: #64748b; font-weight: 600;">Generated by Big Brother OS</p>
+            <p style="color: #64748b; font-weight: 600;">Generated by Pro Dashboard</p>
         </div>
         <div class="pdf-stats">
             <div class="pdf-stat-box"><span id="pdf-score" style="color: var(--warning);">🔥 100</span><label>Focus Points</label></div>
@@ -352,12 +357,17 @@
     </div>
 
     <div class="sidebar">
-        <h2>Big Brother OS</h2>
+        <!-- Replaced Branding & Added 3-Dot Toggle -->
+        <div class="sidebar-header">
+            <h2>Class 10 Pro</h2>
+            <button class="menu-dots" onclick="toggleStats()" title="Toggle Stats">⋮</button>
+        </div>
         
-        <div class="badge-container">
+        <!-- Stats hidden by default to keep UI clean -->
+        <div class="badge-container" id="stat-badges">
             <div class="stat-badge score-badge" id="sidebar-score">🔥 Focus Points: 100</div>
             <div class="stat-badge streak-badge" id="sidebar-streak">📅 Day Streak: 0</div>
-            <div class="stat-badge countdown-badge" id="sidebar-countdown">⏳ Days Left: Calc...</div>
+            <div class="stat-badge countdown-badge" id="sidebar-countdown" onclick="setTargetDate()" title="Click to set your exam date">⏳ Set Target Date</div>
         </div>
         
         <div class="sidebar-progress-container">
@@ -368,7 +378,7 @@
         </div>
 
         <div id="tabs-container">
-            <!-- Tabs are injected here by JS -->
+            <!-- Subject tabs are injected here by JS -->
             <button class="tab-btn analytics-btn" id="nav-analytics" onclick="openAnalytics()">📊 AI Analytics</button>
             <button class="tab-btn leaderboard-btn" id="nav-leaderboard" onclick="openLeaderboard()">🏆 Leaderboard</button>
             <button class="tab-btn battle-btn" id="nav-battle" onclick="openBattleArena()">⚔️ 1v1 Battle</button>
@@ -376,9 +386,8 @@
         </div>
         
         <div class="action-btns">
-            <button class="side-btn" onclick="document.getElementById('import-file').click()">📥 Import Backup</button>
-            <button class="side-btn" onclick="exportData()">📤 Export Data</button>
-            <button class="side-btn" style="background-color: var(--success);" onclick="downloadPDFReport()">📄 Download PDF</button>
+            <!-- Removed Import/Export. Only PDF generation remains. -->
+            <button class="side-btn" style="background-color: var(--success);" onclick="downloadPDFReport()">📄 Download PDF Report</button>
         </div>
     </div>
 
@@ -433,7 +442,7 @@
 
         <div id="analytics-container">
             <div class="ai-insight-card">
-                <div class="ai-header"><h2>🤖 Big Brother AI Analysis</h2></div>
+                <div class="ai-header"><h2>🤖 AI Analysis</h2></div>
                 <p class="ai-message" id="ai-insight-text">Analyzing your study patterns...</p>
             </div>
             <div class="chart-card">
@@ -475,7 +484,7 @@
 
         let myUsername = localStorage.getItem('proTrackerUsername');
         if (!myUsername) {
-            let promptName = prompt("Welcome to Big Brother OS!\nEnter your Squad Nickname for the Leaderboard:");
+            let promptName = prompt("Welcome to Pro Dashboard!\nEnter your Squad Nickname for the Leaderboard:");
             myUsername = promptName && promptName.trim() !== "" ? promptName.trim() : "Anonymous Student";
             localStorage.setItem('proTrackerUsername', myUsername);
         }
@@ -529,9 +538,9 @@
         let savedProgress = JSON.parse(localStorage.getItem('proTrackerDataV2')) || {}; 
         let focusPoints = parseInt(localStorage.getItem('proTrackerPoints')) || 100;
         
-        // Streak Tracking Variables
         let currentStreak = parseInt(localStorage.getItem('proTrackerStreak')) || 0;
         let lastLoginDate = localStorage.getItem('proTrackerLastLogin') || "";
+        let userTargetDate = localStorage.getItem('proTrackerTargetDate');
         let globalOverallPercent = 0;
 
         const tabsContainer = document.getElementById('tabs-container');
@@ -569,7 +578,6 @@
             document.getElementById('sidebar-score').innerText = `🔥 Focus Points: ${focusPoints}`;
             syncToCloud(focusPoints, globalOverallPercent);
             
-            // Re-inject subjects before the hardcoded utility tabs
             const referenceNode = document.getElementById('nav-analytics');
             Object.keys(syllabus).forEach(subject => {
                 const tabBtn = document.createElement('button');
@@ -579,6 +587,12 @@
                 tabsContainer.insertBefore(tabBtn, referenceNode);
             });
             loadSubject("Mathematics", document.querySelectorAll('.nav-subject')[0]);
+        }
+
+        // Stats Toggle Menu
+        function toggleStats() {
+            const badges = document.getElementById('stat-badges');
+            badges.style.display = (badges.style.display === 'flex') ? 'none' : 'flex';
         }
 
         // ==========================================
@@ -629,76 +643,36 @@
         }
 
         // ==========================================
-        // FEATURE 3: TARGET COUNTDOWN
+        // FEATURE 3: TARGET COUNTDOWN (DYNAMIC)
         // ==========================================
+        function setTargetDate() {
+            // Default to Sept 1, 2026 for IOQM if no date is set!
+            const inputDate = prompt("Set your target exam date (YYYY-MM-DD):", userTargetDate || "2026-09-01");
+            if (inputDate && !isNaN(new Date(inputDate).getTime())) {
+                userTargetDate = inputDate;
+                localStorage.setItem('proTrackerTargetDate', userTargetDate);
+                updateCountdown();
+            } else if (inputDate) {
+                showToast("⚠️ Invalid date format. Use YYYY-MM-DD.");
+            }
+        }
+
         function updateCountdown() {
-            const targetDate = new Date("2026-09-01T00:00:00").getTime();
+            if (!userTargetDate) {
+                document.getElementById('sidebar-countdown').innerText = `⏳ Set Target Date`;
+                return;
+            }
+            
+            const targetDate = new Date(userTargetDate + "T00:00:00").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance < 0) {
                 document.getElementById('sidebar-countdown').innerText = `⏳ Target Reached!`;
             } else {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
                 document.getElementById('sidebar-countdown').innerText = `⏳ Target: ${days} days left`;
             }
-        }
-
-        // ==========================================
-        // FEATURE 4: EXPORT & IMPORT DATA
-        // ==========================================
-        function exportData() {
-            const dataToSave = {
-                progress: savedProgress,
-                points: focusPoints,
-                streak: currentStreak,
-                lastLogin: lastLoginDate
-            };
-            
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataToSave));
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href",     dataStr);
-            downloadAnchorNode.setAttribute("download", "class10_backup.json");
-            document.body.appendChild(downloadAnchorNode); 
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-            
-            showToast("✅ Backup Downloaded!");
-        }
-
-        function importData(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const importedData = JSON.parse(e.target.result);
-                    
-                    if (importedData.progress) {
-                        savedProgress = importedData.progress;
-                        localStorage.setItem('proTrackerDataV2', JSON.stringify(savedProgress));
-                    }
-                    if (importedData.points !== undefined) {
-                        focusPoints = importedData.points;
-                        localStorage.setItem('proTrackerPoints', focusPoints);
-                    }
-                    if (importedData.streak !== undefined) {
-                        currentStreak = importedData.streak;
-                        localStorage.setItem('proTrackerStreak', currentStreak);
-                    }
-                    if (importedData.lastLogin !== undefined) {
-                        lastLoginDate = importedData.lastLogin;
-                        localStorage.setItem('proTrackerLastLogin', lastLoginDate);
-                    }
-
-                    showToast("✅ Data Restored! Reloading...");
-                    setTimeout(() => location.reload(), 1500); 
-                } catch (error) {
-                    showToast("❌ Error reading backup file.");
-                }
-            };
-            reader.readAsText(file);
         }
 
         // ==========================================
@@ -780,7 +754,7 @@
                 contentContainer.appendChild(groupDiv);
             }
             updateOverallProgress();
-            if(window.innerWidth <= 768) document.querySelector('.main-content').scrollTop = 0;
+            // Removed manual scroll jump on mobile so native browser scroll handles it
         }
 
         // ==========================================
@@ -1232,7 +1206,7 @@
             clearInterval(focusTimerInterval);
             isFocusing = false;
             document.getElementById('penalty-title').innerText = "🚨 BUSTED 🚨";
-            document.getElementById('penalty-desc').innerText = "Big Brother saw you switch tabs.\nEntry Fee lost.";
+            document.getElementById('penalty-desc').innerText = "You switched tabs.\nEntry Fee lost.";
             document.getElementById('penalty-overlay').style.display = 'flex';
             resetFocusUI();
         }
