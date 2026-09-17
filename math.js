@@ -173,7 +173,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Anatomy of Real Numbers.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Anatomy of Real Numbers.pdf" target="_blank" class="pdf-notes-btn">
                 Open Anatomy of Real Numbers.pdf
             </a>
         </div>
@@ -193,7 +193,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Polynomials Master Guide.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Polynomials Master Guide.pdf" target="_blank" class="pdf-notes-btn">
                 Open Polynomials Master Guide.pdf
             </a>
         </div>
@@ -209,7 +209,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Aesthetic Linear Equations.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Aesthetic Linear Equations.pdf" target="_blank" class="pdf-notes-btn">
                 Open Aesthetic Linear Equations.pdf
             </a>
         </div>
@@ -231,7 +231,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Visual Quadratic Mastery.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Visual Quadratic Mastery.pdf" target="_blank" class="pdf-notes-btn">
                 Open Visual Quadratic Mastery.pdf
             </a>
         </div>
@@ -251,7 +251,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Arithmetic Progressions Decoded.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Arithmetic Progressions Decoded.pdf" target="_blank" class="pdf-notes-btn">
                 Open Arithmetic Progressions Decoded.pdf
             </a>
         </div>
@@ -272,7 +272,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Coordinate Geometry Simplified.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Coordinate Geometry Simplified.pdf" target="_blank" class="pdf-notes-btn">
                 Open Coordinate Geometry Simplified.pdf
             </a>
         </div>
@@ -293,7 +293,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Similar Triangles Mastered.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Similar Triangles Mastered.pdf" target="_blank" class="pdf-notes-btn">
                 Open Similar Triangles Mastered.pdf
             </a>
         </div>
@@ -313,7 +313,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Circles Visual Study Guide.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Circles Visual Study Guide.pdf" target="_blank" class="pdf-notes-btn">
                 Open Circles Visual Study Guide.pdf
             </a>
         </div>
@@ -333,7 +333,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Circle Math Mastery.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Circle Math Mastery.pdf" target="_blank" class="pdf-notes-btn">
                 Open Circle Math Mastery.pdf
             </a>
         </div>
@@ -355,7 +355,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Aesthetic Solids Guide.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Aesthetic Solids Guide.pdf" target="_blank" class="pdf-notes-btn">
                 Open Aesthetic Solids Guide.pdf
             </a>
         </div>
@@ -376,7 +376,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Ultimate Trig Cheat Sheet.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Ultimate Trig Cheat Sheet.pdf" target="_blank" class="pdf-notes-btn">
                 Open Ultimate Trig Cheat Sheet.pdf
             </a>
         </div>
@@ -395,7 +395,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Trig Heights and Distances Visual Guide.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Trig Heights and Distances Visual Guide.pdf" target="_blank" class="pdf-notes-btn">
                 Open Trig Heights and Distances Visual Guide.pdf
             </a>
         </div>
@@ -416,7 +416,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Grouped Data Mastery.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Grouped Data Mastery.pdf" target="_blank" class="pdf-notes-btn">
                 Open Grouped Data Mastery.pdf
             </a>
         </div>
@@ -437,7 +437,7 @@ Object.assign(questDatabase, {
         </div>
         <div class="pdf-notes-section">
             <div class="n-h3">📄 Access Complete PDF Notes</div>
-            <a href="./notes/math/Visual Probability Cheat Sheet.pdf" target="_blank" class="pdf-notes-btn">
+            <a href="./Visual Probability Cheat Sheet.pdf" target="_blank" class="pdf-notes-btn">
                 Open Visual Probability Cheat Sheet.pdf
             </a>
         </div>
