@@ -158,7 +158,7 @@ Object.assign(questDatabase, {
     ]
 });
 
-Object.assign(secretNotesVault, {
+            Object.assign(secretNotesVault, {
     "Mathematics-Algebra & Numbers-RealNumbers": `
         <div class="n-title">REAL NUMBERS</div>
         <div class="n-section">
@@ -170,6 +170,12 @@ Object.assign(secretNotesVault, {
             <div class="n-h3">2. Irrationality</div>
             <p>• Let p be a prime number. If p divides <span class="n-hl">a²</span>, then p divides <span class="n-hl">a</span>.</p>
             <p>• Numbers like √2, √3, and √5 are proven irrational using the method of contradiction.</p>
+        </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Anatomy of Real Numbers.pdf" target="_blank" class="pdf-notes-btn">
+                Open Anatomy of Real Numbers.pdf
+            </a>
         </div>
     `,
 
@@ -185,6 +191,12 @@ Object.assign(secretNotesVault, {
             <div class="n-formula">Sum of Zeroes (α + β) = -b / a</div>
             <div class="n-formula">Product of Zeroes (α × β) = c / a</div>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Polynomials Master Guide.pdf" target="_blank" class="pdf-notes-btn">
+                Open Polynomials Master Guide.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Algebra & Numbers-PairofLinearEquations": `
@@ -194,6 +206,12 @@ Object.assign(secretNotesVault, {
             <p>• <span class="n-hl">Intersecting Lines:</span> a₁/a₂ ≠ b₁/b₂ (Exactly one unique solution, Consistent).</p>
             <p>• <span class="n-hl">Parallel Lines:</span> a₁/a₂ = b₁/b₂ ≠ c₁/c₂ (No solution, Inconsistent).</p>
             <p>• <span class="n-hl">Coincident Lines:</span> a₁/a₂ = b₁/b₂ = c₁/c₂ (Infinite solutions, Dependent/Consistent).</p>
+        </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Aesthetic Linear Equations.pdf" target="_blank" class="pdf-notes-btn">
+                Open Aesthetic Linear Equations.pdf
+            </a>
         </div>
     `,
 
@@ -211,6 +229,12 @@ Object.assign(secretNotesVault, {
             <p>• If <span class="n-hl">D = 0</span>: Two equal real roots.</p>
             <p>• If <span class="n-hl">D < 0</span>: No real roots.</p>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Visual Quadratic Mastery.pdf" target="_blank" class="pdf-notes-btn">
+                Open Visual Quadratic Mastery.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Algebra & Numbers-ArithmeticProgressions": `
@@ -224,6 +248,12 @@ Object.assign(secretNotesVault, {
             <div class="n-h3">2. Sum of First 'n' Terms</div>
             <div class="n-formula">Sₙ = (n/2) × [2a + (n - 1)d]</div>
             <p>• If the last term 'l' is known: <span class="n-hl">Sₙ = (n/2) × (a + l)</span></p>
+        </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Arithmetic Progressions Decoded.pdf" target="_blank" class="pdf-notes-btn">
+                Open Arithmetic Progressions Decoded.pdf
+            </a>
         </div>
     `,
 
@@ -240,6 +270,12 @@ Object.assign(secretNotesVault, {
             <div class="n-formula">x = (m₁x₂ + m₂x₁)/(m₁+m₂), y = (m₁y₂ + m₂y₁)/(m₁+m₂)</div>
             <p>• Midpoint: <span class="n-hl">((x₁+x₂)/2, (y₁+y₂)/2)</span></p>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Coordinate Geometry Simplified.pdf" target="_blank" class="pdf-notes-btn">
+                Open Coordinate Geometry Simplified.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Geometry-Triangles": `
@@ -255,6 +291,12 @@ Object.assign(secretNotesVault, {
             <p>• <span class="n-hl">SSS (Side-Side-Side):</span> Corresponding sides are proportional.</p>
             <p>• <span class="n-hl">SAS (Side-Angle-Side):</span> One angle is equal and including sides are proportional.</p>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Similar Triangles Mastered.pdf" target="_blank" class="pdf-notes-btn">
+                Open Similar Triangles Mastered.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Geometry-Circles": `
@@ -269,6 +311,12 @@ Object.assign(secretNotesVault, {
             <p>• A circle can have a maximum of two parallel tangents.</p>
             <p>• The line containing the radius through the point of contact is called the 'normal' to the circle at the point.</p>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Circles Visual Study Guide.pdf" target="_blank" class="pdf-notes-btn">
+                Open Circles Visual Study Guide.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Geometry-AreasRelatedtoCircles": `
@@ -282,6 +330,12 @@ Object.assign(secretNotesVault, {
             <div class="n-formula">Length of Arc = (θ/360) × 2πr</div>
             <div class="n-formula">Area of Sector = (θ/360) × πr²</div>
             <p>• Area of Segment = Area of corresponding sector - Area of corresponding triangle.</p>
+        </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Circle Math Mastery.pdf" target="_blank" class="pdf-notes-btn">
+                Open Circle Math Mastery.pdf
+            </a>
         </div>
     `,
 
@@ -299,6 +353,12 @@ Object.assign(secretNotesVault, {
             <p>• Sphere Volume = <span class="n-hl">(4/3)πr³</span>  |  Surface Area = <span class="n-hl">4πr²</span></p>
             <p>• Hemisphere Volume = <span class="n-hl">(2/3)πr³</span>  |  TSA = <span class="n-hl">3πr²</span></p>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Aesthetic Solids Guide.pdf" target="_blank" class="pdf-notes-btn">
+                Open Aesthetic Solids Guide.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Trigonometry & Stats-IntrotoTrigonometry": `
@@ -314,6 +374,12 @@ Object.assign(secretNotesVault, {
             <div class="n-formula">1 + tan²θ = sec²θ</div>
             <div class="n-formula">1 + cot²θ = cosec²θ</div>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Ultimate Trig Cheat Sheet.pdf" target="_blank" class="pdf-notes-btn">
+                Open Ultimate Trig Cheat Sheet.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Trigonometry & Stats-HeightsandDistances": `
@@ -326,6 +392,12 @@ Object.assign(secretNotesVault, {
         <div class="n-section">
             <div class="n-h3">2. Key Strategy</div>
             <p>• Always draw a right-angled triangle mapping the height (P) and base distance (B). Use <span class="n-hl">tan θ = P/B</span> in 90% of numericals to find the missing side.</p>
+        </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Trig Heights and Distances Visual Guide.pdf" target="_blank" class="pdf-notes-btn">
+                Open Trig Heights and Distances Visual Guide.pdf
+            </a>
         </div>
     `,
 
@@ -342,6 +414,12 @@ Object.assign(secretNotesVault, {
             <p>• Median is the middlemost value of sorted data.</p>
             <div class="n-formula">3 × Median = Mode + 2 × Mean</div>
         </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Grouped Data Mastery.pdf" target="_blank" class="pdf-notes-btn">
+                Open Grouped Data Mastery.pdf
+            </a>
+        </div>
     `,
 
     "Mathematics-Trigonometry & Stats-Probability": `
@@ -356,6 +434,12 @@ Object.assign(secretNotesVault, {
             <p>• The probability of an impossible event is <span class="n-hl">0</span>.</p>
             <p>• Probability always lies between 0 and 1: <span class="n-hl">0 ≤ P(E) ≤ 1</span>.</p>
             <div class="n-formula">P(E) + P(not E) = 1</div>
+        </div>
+        <div class="pdf-notes-section">
+            <div class="n-h3">📄 Access Complete PDF Notes</div>
+            <a href="./notes/math/Visual Probability Cheat Sheet.pdf" target="_blank" class="pdf-notes-btn">
+                Open Visual Probability Cheat Sheet.pdf
+            </a>
         </div>
     `
 });
